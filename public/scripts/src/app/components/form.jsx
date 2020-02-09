@@ -1,23 +1,23 @@
 import React from 'react'
 // elements
 import Button from './../elements/button'
-import Input from './../elements/input'
+import Select from './../elements/select'
 
 export default (props) => {
+
+    console.log('Form')
 
     const [bool, setBool] = React.useState({submit: false})
 
     return(
-        <form onSubmit={(event) => {event.preventDefault()}} >
-            <Input
+        <form onSubmit={(event) => {event.preventDefault()}}>
+            <Select
                 bool={bool.submit}
-                handleSubmit={props.handleSubmit}
                 setBool={() => {setBool({submit: false})}}
-            ></Input>
+                handleSubmit={props.handleSubmit} />
             <Button
                 onClick={() => {setBool({submit: true})}}
-                label={props.label}
-            ></Button>
+                label={props.label} />
         </form>
     )
 }

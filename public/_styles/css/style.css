@@ -13,7 +13,7 @@ body {
   height: 100%;
   line-height: 1.5;
   color: #333333;
-  font-family: "unset";
+  font-family: "M PLUS Rounded 1c";
   font-weight: 300;
 }
 
@@ -44,6 +44,20 @@ input, button, textarea, select {
   font: inherit;
   border: none;
   outline: none;
+}
+
+body {
+  color: #ffffff;
+  background-color: #576b9e;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input::placeholder {
+  color: #ffffff;
+  opacity: 0.5;
 }
 
 .e-border-black {
@@ -302,6 +316,22 @@ input, button, textarea, select {
 
 .e-color-back-theme-green {
   background-color: #51a1a2;
+}
+
+.e-display-block {
+  display: block;
+}
+
+.e-display-grid {
+  display: grid;
+}
+
+.e-display-flex {
+  display: flex;
+}
+
+.e-display-none {
+  display: none;
 }
 
 .e-font-0 {
@@ -12370,4 +12400,105 @@ input, button, textarea, select {
 
 .e-width-vw-100 {
   width: 100vw;
+}
+
+.c-button {
+  display: grid;
+  place-items: center;
+  height: 2.5rem;
+  width: 11rem;
+  border: 1px solid #ffffff;
+}
+
+@media screen and (min-width: 960px) {
+  .c-button {
+    height: 3rem;
+    width: 13rem;
+  }
+}
+
+.c-frame-form-alarm {
+  display: grid;
+  place-items: center;
+  grid-template: auto auto / 40% 20% 40%;
+}
+
+.c-frame-form-alarm-button {
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+}
+
+.c-frame-form-timer {
+  display: grid;
+  place-items: center;
+  grid-template: auto auto / 30% 5% 30% 5% 30%;
+}
+
+.c-frame-form-timer-button {
+  grid-row: 2 / 3;
+  grid-column: 1 / 6;
+}
+
+.c-frame-count {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 30% 5% 30% 5% 30%;
+}
+
+.s-fade-in {
+  display: grid;
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.s-fade-out {
+  display: none;
+  animation: fade-out 1s;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.s-margin-top-5-10 {
+  margin-top: 5rem;
+}
+
+@media screen and (min-width: 960px) {
+  .s-margin-top-5-10 {
+    margin-top: 10rem;
+  }
+}
+
+.s-width-percent-70-30 {
+  width: 70%;
+}
+
+@media screen and (min-width: 960px) {
+  .s-width-percent-70-30 {
+    width: 30%;
+  }
+}
+
+.s-width-percent-90-50 {
+  width: 90%;
+}
+
+@media screen and (min-width: 960px) {
+  .s-width-percent-90-50 {
+    width: 50%;
+  }
 }

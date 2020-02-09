@@ -1,5 +1,15 @@
-export default {
-    Clock: '/',
-    Alarm: '/alarm',
-    Timer: '/timer',
+/**
+ * @param {string} path
+ * @return {string}
+ */
+export default (path) => {
+
+    switch (path) {
+        case 'clock':
+            return '/'
+        case 'alarm':
+            return '/alarm'
+        case 'timer':
+            return '/timer'
+    }
 }

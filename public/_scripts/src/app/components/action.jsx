@@ -1,7 +1,5 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-// constants
-import Path from './../constants/path'
 // elements
 import Button from './../elements/button'
 import Count from './../elements/count'
@@ -9,10 +7,10 @@ import Count from './../elements/count'
 import useClock from './../hooks/useClock'
 import useAlarm from './../hooks/useAlarm'
 import useTimer from './../hooks/useTimer'
+// constants
+import Path from './../constants/path'
 
 export default (props) => {
-
-    console.log('Action')
 
     const [time, setTime] = React.useState({
         hour: 0,
@@ -37,13 +35,13 @@ export default (props) => {
         let result = []
 
         switch (location.pathname) {
-            case Path('clock'):
+            case Path.clock:
                 result = useClock()
                 break
-            case Path('alarm'):
+            case Path.alarm:
                 result = useAlarm(props.time)
                 break
-            case Path('timer'):
+            case Path.timer:
                 result = useTimer(props.time)
                 break
         }
@@ -56,18 +54,21 @@ export default (props) => {
     }
 
     return(
-        <Router>
-            <div>
-                <Count time={time} />
-                <Route exact path={[Path('alarm'), Path('timer')]}>
+        <div className={props.classSheet + ' ' + 'e-center-items-11 e-width-percent-100'}>
+            <Router>
+                <Count
+                    time={time}
+                ></Count>
+                <Route exact path={[Path.alarm, Path.timer]}>
                     <Button
                         onClick={() => {
                             clearInterval(loop)
                             props.setBool()
                         }}
-                        label={props.label} />
+                        label={props.label}
+                    ></Button>
                 </Route>
-            </div>
-        </Router>
+            </Router>
+        </div>
     )
 }

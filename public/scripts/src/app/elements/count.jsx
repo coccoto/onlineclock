@@ -4,6 +4,8 @@ import usePad from './../hooks/usePad'
 
 export default (props) => {
 
+    console.log('Count')
+
     return(
         <div>
             <span>{usePad(props.time.hour)}</span>

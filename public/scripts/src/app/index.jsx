@@ -1,12 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // components
-import Form from './components/form'
 import Action from './components/action'
+import Form from './components/form'
 // constants
 import Path from './constants/path'
 
 export default () => {
+
+    console.log('Index')
 
     const [time, setTime] = React.useState({
         hour: 0,
@@ -29,23 +31,18 @@ export default () => {
     return(
         <Router>
             <Switch>
-                <Route exact path={Path.Clock}>
-                    <Action
-                        bool={true}
-                    ></Action>
+                <Route exact path={Path('clock')}>
+                    <Action bool={true} />
                 </Route>
-
-                <Route exact path={[Path.Alarm, Path.Timer]}>
-                    <Form 
+                <Route exact path={[Path('alarm'), Path('timer')]}>
+                    <Form
                         handleSubmit={(i) => {handleSubmit(i)}}
-                        label={'SET'}
-                    ></Form>
+                        label={'SET'} />
                     <Action
                         time={time}
                         bool={bool.run}
                         setBool={() => {setBool({run: false})}}
-                        label={'OFF'}
-                    ></Action>
+                        label={'OFF'} />
                 </Route>
             </Switch>
         </Router>
