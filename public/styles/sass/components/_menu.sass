@@ -1,0 +1,15 @@
+.c-menu
+    position: absolute
+    bottom: 0
+    border-top: 1px solid white
+
+    &-anchor
+        @include grid('items', 11)
+        height: 100%
+        width: 100%
+
+        &:hover
+            background-color: lighten(map-get($colors, 'theme-blue'), 3%)
+
+        @include media
+            font-size: 1.25rem

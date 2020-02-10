@@ -13,7 +13,7 @@ body {
   height: 100%;
   line-height: 1.5;
   color: #333333;
-  font-family: "unset";
+  font-family: "M PLUS Rounded 1c";
   font-weight: 300;
 }
 
@@ -44,6 +44,21 @@ input, button, textarea, select {
   font: inherit;
   border: none;
   outline: none;
+}
+
+body {
+  color: white;
+  background-color: #576b9e;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+option {
+  color: #333333;
 }
 
 .e-border-black {
@@ -10760,6 +10775,18 @@ input, button, textarea, select {
   padding-left: 50rem;
 }
 
+.e-select-none {
+  user-select: none;
+}
+
+.e-select-text {
+  user-select: text;
+}
+
+.e-select-all {
+  user-select: all;
+}
+
 .e-width-rem-0 {
   width: 0rem;
 }
@@ -12370,4 +12397,99 @@ input, button, textarea, select {
 
 .e-width-vw-100 {
   width: 100vw;
+}
+
+.c-button {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 12rem;
+  font-size: 1.25rem;
+  border: 1px solid white;
+}
+
+.c-button:hover {
+  background-color: #5e72a6;
+}
+
+.c-frame-form-3 {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 40% 20% 40%;
+}
+
+.c-frame-form-5 {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 30% 5% 30% 5% 30%;
+}
+
+.c-frame-menu {
+  display: grid;
+  grid-template: 3rem / 1fr 1fr 1fr;
+}
+
+.c-menu {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid white;
+}
+
+.c-menu-anchor {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.c-menu-anchor:hover {
+  background-color: #5e72a6;
+}
+
+@media screen and (min-width: 960px) {
+  .c-menu-anchor {
+    font-size: 1.25rem;
+  }
+}
+
+.s-fade-in {
+  display: grid;
+  animation: fade-in 2s;
+}
+
+@keyframes fade-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  100% {
+    display: grid;
+    opacity: 1;
+  }
+}
+
+.s-fade-out {
+  display: none;
+  animation: fade-out 2s;
+}
+
+@keyframes fade-out {
+  0% {
+    display: grid;
+    opacity: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.s-width-percent-90-30 {
+  width: 90%;
+}
+
+@media screen and (min-width: 960px) {
+  .s-width-percent-90-30 {
+    width: 30%;
+  }
 }

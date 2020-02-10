@@ -7,12 +7,12 @@ export default (props) => {
     console.log('Count')
 
     return(
-        <div>
-            <span>{usePad(props.time.hour)}</span>
-            <span>：</span>
-            <span>{usePad(props.time.minute)}</span>
-            <span>：</span>
-            <span>{usePad(props.time.second)}</span>
+        <div className={'c-frame-form-5 s-width-percent-90-30'}>
+            <span className={'e-font-2'}>{usePad(props.time.hour)}</span>
+            <span className={'e-font-1_5'}>：</span>
+            <span className={'e-font-2'}>{usePad(props.time.minute)}</span>
+            <span className={'e-font-1_5'}>：</span>
+            <span className={'e-font-2'}>{usePad(props.time.second)}</span>
         </div>
     )
 }

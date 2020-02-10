@@ -36022,9 +36022,57 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/app/components/action.jsx":
+/***/ "./src/app/constants/class.js":
+/*!************************************!*\
+  !*** ./src/app/constants/class.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _path__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./path */ "./src/app/constants/path.js");
+
+
+var point = function point() {
+  if (location.pathname === _path__WEBPACK_IMPORTED_MODULE_0__["default"].alarm) {
+    return true;
+  } else if (location.pathname === _path__WEBPACK_IMPORTED_MODULE_0__["default"].timer) {
+    return false;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  cFrame: {
+    form: point() ? 'c-frame-form-3' : 'c-frame-form-5'
+  },
+  sWidth: {
+    percent: point() ? 's-width-percent-50' : 'e-width-percent-70'
+  }
+});
+
+/***/ }),
+
+/***/ "./src/app/constants/path.js":
+/*!***********************************!*\
+  !*** ./src/app/constants/path.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  clock: '/',
+  alarm: '/alarm',
+  timer: '/timer'
+});
+
+/***/ }),
+
+/***/ "./src/app/containers/action.jsx":
 /*!***************************************!*\
-  !*** ./src/app/components/action.jsx ***!
+  !*** ./src/app/containers/action.jsx ***!
   \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -36034,12 +36082,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../constants/path */ "./src/app/constants/path.js");
-/* harmony import */ var _elements_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../elements/button */ "./src/app/elements/button.jsx");
-/* harmony import */ var _elements_count__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../elements/count */ "./src/app/elements/count.jsx");
-/* harmony import */ var _hooks_useClock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../hooks/useClock */ "./src/app/hooks/useClock.js");
-/* harmony import */ var _hooks_useAlarm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../hooks/useAlarm */ "./src/app/hooks/useAlarm.js");
-/* harmony import */ var _hooks_useTimer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../hooks/useTimer */ "./src/app/hooks/useTimer.js");
+/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/path */ "./src/app/constants/path.js");
+/* harmony import */ var _elements_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../elements/button */ "./src/app/elements/button.jsx");
+/* harmony import */ var _elements_count__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../elements/count */ "./src/app/elements/count.jsx");
+/* harmony import */ var _hooks_useClock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useClock */ "./src/app/hooks/useClock.js");
+/* harmony import */ var _hooks_useAlarm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useAlarm */ "./src/app/hooks/useAlarm.js");
+/* harmony import */ var _hooks_useTimer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useTimer */ "./src/app/hooks/useTimer.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -36090,15 +36138,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     var result = [];
 
     switch (location.pathname) {
-      case Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('clock'):
+      case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].clock:
         result = Object(_hooks_useClock__WEBPACK_IMPORTED_MODULE_5__["default"])();
         break;
 
-      case Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('alarm'):
+      case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].alarm:
         result = Object(_hooks_useAlarm__WEBPACK_IMPORTED_MODULE_6__["default"])(props.time);
         break;
 
-      case Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('timer'):
+      case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].timer:
         result = Object(_hooks_useTimer__WEBPACK_IMPORTED_MODULE_7__["default"])(props.time);
         break;
     }
@@ -36110,11 +36158,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     });
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_count__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: 'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_count__WEBPACK_IMPORTED_MODULE_4__["default"], {
     time: time
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: [Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('alarm'), Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('timer')]
+    path: [_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].alarm, _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].timer]
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onClick: function onClick() {
       clearInterval(loop);
@@ -36126,9 +36176,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
-/***/ "./src/app/components/form.jsx":
+/***/ "./src/app/containers/form.jsx":
 /*!*************************************!*\
-  !*** ./src/app/components/form.jsx ***!
+  !*** ./src/app/containers/form.jsx ***!
   \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -36137,8 +36187,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _elements_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../elements/button */ "./src/app/elements/button.jsx");
-/* harmony import */ var _elements_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../elements/select */ "./src/app/elements/select.jsx");
+/* harmony import */ var _elements_button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../elements/button */ "./src/app/elements/button.jsx");
+/* harmony import */ var _elements_select__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../elements/select */ "./src/app/elements/select.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -36162,6 +36212,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       _setBool = _React$useState2[1];
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: 'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet,
     onSubmit: function onSubmit(event) {
       event.preventDefault();
     }
@@ -36185,34 +36236,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 /***/ }),
 
-/***/ "./src/app/constants/path.js":
-/*!***********************************!*\
-  !*** ./src/app/constants/path.js ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * @param {string} path
- * @return {string}
- */
-/* harmony default export */ __webpack_exports__["default"] = (function (path) {
-  switch (path) {
-    case 'clock':
-      return '/';
-
-    case 'alarm':
-      return '/alarm';
-
-    case 'timer':
-      return '/timer';
-  }
-});
-
-/***/ }),
-
 /***/ "./src/app/elements/button.jsx":
 /*!*************************************!*\
   !*** ./src/app/elements/button.jsx ***!
@@ -36228,6 +36251,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   console.log('Button');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: 'c-button e-margin-top-5',
     onClick: function onClick() {
       props.onClick();
     }
@@ -36253,7 +36277,53 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   console.log('Count');
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.hour)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.minute)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.second)));
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: 'c-frame-form-5 s-width-percent-90-30'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-2'
+  }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.hour)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-1_5'
+  }, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-2'
+  }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.minute)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-1_5'
+  }, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-2'
+  }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.second)));
+});
+
+/***/ }),
+
+/***/ "./src/app/elements/menu.jsx":
+/*!***********************************!*\
+  !*** ./src/app/elements/menu.jsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../constants/path */ "./src/app/constants/path.js");
+ // constants
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: 'c-menu c-frame-menu e-width-percent-100'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: 'c-menu-anchor',
+    href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].clock
+  }, "Clock")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: 'e-border-right-white e-border-left-white'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: 'c-menu-anchor',
+    href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].alarm
+  }, "Alarm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: 'c-menu-anchor',
+    href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].timer
+  }, "Timer")));
 });
 
 /***/ }),
@@ -36271,7 +36341,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../constants/path */ "./src/app/constants/path.js");
-/* harmony import */ var _hooks_useSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../hooks/useSelect */ "./src/app/hooks/useSelect.js");
+/* harmony import */ var _constants_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../constants/class */ "./src/app/constants/class.js");
+/* harmony import */ var _hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../hooks/useSelect */ "./src/app/hooks/useSelect.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -36288,6 +36359,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
  // constants
+
 
  // hooks
 
@@ -36316,19 +36388,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     setTime(_objectSpread({}, time, _defineProperty({}, target.name, target.value)));
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: _constants_class__WEBPACK_IMPORTED_MODULE_3__["default"].cFrame.form + ' ' + 's-width-percent-90-30'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: 'e-font-2 e-center-text',
     name: 'hour',
     onChange: handleChange
-  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_3__["default"])(23))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__["default"])(23))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-1_5'
+  }, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: 'e-font-2 e-center-text',
     name: 'minute',
     onChange: handleChange
-  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_3__["default"])(59))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__["default"])(59))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: Object(_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"])('timer')
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    path: _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].timer
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: 'e-font-1_5'
+  }, "\uFF1A"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    className: 'e-font-2 e-center-text',
     name: 'second',
     onChange: handleChange
-  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_3__["default"])(59))))));
+  }, Object(_hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__["default"])(59))))));
 });
 
 /***/ }),
@@ -36439,6 +36520,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _hooks_usePad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../hooks/usePad */ "./src/app/hooks/usePad.js");
+ // hooks
+
 
 /**
  * @param {number} num
@@ -36446,16 +36530,16 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /* harmony default export */ __webpack_exports__["default"] = (function (num) {
-  var options = [];
+  var select = [];
 
   for (var i = 0; i <= num; i++) {
-    options.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    select.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
       value: i,
       key: i
-    }, i));
+    }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(i)));
   }
 
-  return options;
+  return select;
 });
 
 /***/ }),
@@ -36506,9 +36590,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _components_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/action */ "./src/app/components/action.jsx");
-/* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/form */ "./src/app/components/form.jsx");
-/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants/path */ "./src/app/constants/path.js");
+/* harmony import */ var _containers_action__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./containers/action */ "./src/app/containers/action.jsx");
+/* harmony import */ var _containers_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers/form */ "./src/app/containers/form.jsx");
+/* harmony import */ var _elements_menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./elements/menu */ "./src/app/elements/menu.jsx");
+/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./constants/path */ "./src/app/constants/path.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -36518,8 +36603,10 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
- // components
+ // containers
 
+
+ // elements
 
  // constants
 
@@ -36555,20 +36642,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     });
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  var classSheet = {
+    form: !bool.run ? 's-fade-in' : 's-fade-out',
+    action: bool.run ? 's-fade-in' : 's-fade-out'
+  };
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: 'e-height-vh-100 e-center-items-11 e-select-none'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: Object(_constants_path__WEBPACK_IMPORTED_MODULE_4__["default"])('clock')
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_action__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    path: _constants_path__WEBPACK_IMPORTED_MODULE_5__["default"].clock
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_action__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    classSheet: 's-fade-in',
     bool: true
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
-    path: [Object(_constants_path__WEBPACK_IMPORTED_MODULE_4__["default"])('alarm'), Object(_constants_path__WEBPACK_IMPORTED_MODULE_4__["default"])('timer')]
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    path: [_constants_path__WEBPACK_IMPORTED_MODULE_5__["default"].alarm, _constants_path__WEBPACK_IMPORTED_MODULE_5__["default"].timer]
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_form__WEBPACK_IMPORTED_MODULE_3__["default"], {
     handleSubmit: function handleSubmit(i) {
       _handleSubmit(i);
     },
+    classSheet: classSheet.form,
     label: 'SET'
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_action__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_action__WEBPACK_IMPORTED_MODULE_2__["default"], {
     time: time,
     bool: bool.run,
     setBool: function setBool() {
@@ -36576,8 +36671,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         run: false
       });
     },
+    classSheet: classSheet.action,
     label: 'OFF'
-  }))));
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_menu__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 });
 
 /***/ }),
