@@ -6,7 +6,7 @@ export default (props) => {
 
     React.useEffect(() => {
         if (props.bool) {
-            document.title = usePad(props.time.hour) + ' : ' + usePad(props.time.minute) + ' : ' + usePad(props.time.second)
+            document.title = usePad(props.time.hour) + ' : ' + usePad(props.time.minute) + ' : ' + usePad(props.time.second) + ' - Online Clock'
 
         } else {
             document.title = 'Online Clock'

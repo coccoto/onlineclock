@@ -36293,7 +36293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     if (props.bool) {
-      document.title = Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.hour) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.minute) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.second);
+      document.title = Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.hour) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.minute) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.second) + ' - Online Clock';
     } else {
       document.title = 'Online Clock';
     }
