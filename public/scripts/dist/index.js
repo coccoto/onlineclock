@@ -36177,7 +36177,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: 'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_count__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    time: time
+    time: time,
+    bool: props.bool
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: [_constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].alarm, _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].timer]
@@ -36290,6 +36291,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    if (props.bool) {
+      document.title = Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.hour) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.minute) + ' : ' + Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(props.time.second);
+    } else {
+      document.title = 'Online Clock';
+    }
+  });
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: 'c-frame-form-5 s-width-percent-90-30'
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {

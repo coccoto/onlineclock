@@ -4,6 +4,15 @@ import usePad from '../hooks/usePad'
 
 export default (props) => {
 
+    React.useEffect(() => {
+        if (props.bool) {
+            document.title = usePad(props.time.hour) + ' : ' + usePad(props.time.minute) + ' : ' + usePad(props.time.second)
+
+        } else {
+            document.title = 'Online Clock'
+        }
+    })
+
     return (
         <div className={'c-frame-form-5 s-width-percent-90-30'}>
             <span 

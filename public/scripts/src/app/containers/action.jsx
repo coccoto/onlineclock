@@ -82,7 +82,9 @@ export default (props) => {
     return (
         <Router>
             <div className={'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet}>
-                <Count time={time} />
+                <Count
+                    time={time}
+                    bool={props.bool} />
                 <Route exact path={[Path.alarm, Path.timer]}>
                     <Button
                         onClick={() => {
