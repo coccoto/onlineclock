@@ -3,9 +3,9 @@
  */
 export default () => {
 
-    let date = new Date()
+    const date = new Date()
 
-    return({
+    return ({
         hour: date.getHours(),
         minute: date.getMinutes(),
         second: date.getSeconds(),

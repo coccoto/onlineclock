@@ -6,9 +6,10 @@ import Path from '../constants/path'
 import Button from '../elements/button'
 import Count from '../elements/count'
 // hooks
+import useAlarm from '../hooks/useAlarm'
 import useAudio from '../hooks/useAudio'
 import useClock from '../hooks/useClock'
-import useAlarm from '../hooks/useAlarm'
+import useRoute from '../hooks/useRoute'
 import useTimer from '../hooks/useTimer'
 
 export default (props) => {
@@ -26,21 +27,18 @@ export default (props) => {
 
     React.useEffect(() => {
         if (props.bool) {
-            if (location.pathname === '/timer') {
+            if (! useRoute('timer')) {
+                setTimeout(update, 0)
+
+            } else {
                 setTime({
                     hour: props.time.hour,
                     minute: props.time.minute,
                     second: props.time.second,
                 })
-
-                setTimeout(() => {
-                    setLoop(setInterval(update, 1000))
-                }, 0)
-
-            } else {
-                setTimeout(update, 0)
-                setLoop(setInterval(update, 1000))
             }
+
+            setLoop(setInterval(update, 1000))
 
             return () => {
                 clearInterval(refLoop.current)
@@ -55,18 +53,16 @@ export default (props) => {
     const update = () => {
         let result = []
 
-        switch (location.pathname) {
-            case Path.clock:
-                result = useClock()
-                break
-            case Path.alarm:
-                result = useAlarm(props.time)
-                notice(result)
-                break
-            case Path.timer:
-                result = useTimer(props.time)
-                notice(result)
-                break
+        if (useRoute('clock')) {
+            result = useClock()
+
+        } else if (useRoute('alarm')) {
+            result = useAlarm(props.time)
+            notice(result)
+
+        } else if (useRoute('timer')) {
+            result = useTimer(props.time)
+            notice(result)
         }
 
         setTime({
@@ -83,7 +79,7 @@ export default (props) => {
         }
     }
 
-    return(
+    return (
         <Router>
             <div className={'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet}>
                 <Count time={time} />
@@ -92,7 +88,6 @@ export default (props) => {
                         onClick={() => {
                             clearInterval(loop)
                             audio.pause()
-                            audio.current(0)
                             props.setBool()
                         }}
                         label={props.label} />

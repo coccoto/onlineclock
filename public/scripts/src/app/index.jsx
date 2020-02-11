@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+// constants
+import Path from './constants/path'
 // containers
 import Action from './containers/action'
 import Form from './containers/form'
 // elements
 import Menu from './elements/menu'
-// constants
-import Path from './constants/path'
 
 export default () => {
 
@@ -29,17 +29,17 @@ export default () => {
     }
 
     const classSheet = {
-        form: ! bool.run ? 's-fade-in' : 's-fade-out',
-        action: bool.run ? 's-fade-in' : 's-fade-out',
+        form: ! bool.run ? 's-animation-in' : 's-animation-out',
+        action: bool.run ? 's-animation-in' : 's-animation-out',
     }
 
-    return(
+    return (
         <Router>
             <div className={'e-height-vh-100 e-center-items-11'}>
                 <Switch>
                     <Route exact path={Path.clock}>
                         <Action
-                            classSheet={'s-fade-in'}
+                            classSheet={'s-animation-in'}
                             bool={true} />
                     </Route>
                     <Route exact path={[Path.alarm, Path.timer]}>

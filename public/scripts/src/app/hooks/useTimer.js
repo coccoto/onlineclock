@@ -17,7 +17,7 @@ export default (time) => {
         time.hour -= 1
     }
 
-    return({
+    return ({
         hour: time.hour,
         minute: time.minute,
         second: time.second,

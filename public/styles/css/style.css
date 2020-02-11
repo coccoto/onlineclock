@@ -12479,12 +12479,12 @@ option {
   border-left: 1px solid #adb9d8;
 }
 
-.s-fade-in {
+.s-animation-in {
   display: grid;
-  animation: fade-in 2s;
+  animation: in 2s;
 }
 
-@keyframes fade-in {
+@keyframes in {
   0% {
     display: none;
     opacity: 0;
@@ -12495,12 +12495,12 @@ option {
   }
 }
 
-.s-fade-out {
+.s-animation-out {
   display: none;
-  animation: fade-out 2s;
+  animation: out 2s;
 }
 
-@keyframes fade-out {
+@keyframes out {
   0% {
     display: grid;
     opacity: 1;

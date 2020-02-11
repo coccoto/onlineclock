@@ -1,30 +1,20 @@
 import React from 'react'
 // constants
+import Class from '../constants/class'
 import Path from '../constants/path'
 
-export default (props) => {
+export default () => {
 
-    console.log(props)
-
-    const classSheet = {
-        clock: location.pathname === Path.clock ? 'e-color-back-theme-green' : '',
-        alarm: location.pathname === Path.alarm ? 'e-color-back-theme-green' : '',
-        timer: location.pathname === Path.timer ? 'e-color-back-theme-green' : '',
-    }
-
-    return(
+    return (
         <ul className={'c-frame-menu c-menu'}>
             <li>
-                <a className={'c-menu-anchor' + ' ' + classSheet.alarm}
-                    href={Path.alarm}>Alarm</a>
+                <a className={'c-menu-anchor' + ' ' + Class.element.colorBack.alarm} href={Path.alarm}>Alarm</a>
             </li>
             <li className={'c-menu-border'}>
-                <a className={'c-menu-anchor' + ' ' + classSheet.clock}
-                    href={Path.clock}>Clock</a>
+                <a className={'c-menu-anchor' + ' ' + Class.element.colorBack.clock} href={Path.clock}>Clock</a>
             </li>
             <li>
-                <a className={'c-menu-anchor' + ' ' + classSheet.timer}
-                    href={Path.timer}>Timer</a>
+                <a className={'c-menu-anchor' + ' ' + Class.element.colorBack.timer} href={Path.timer}>Timer</a>
             </li>
         </ul>
     )

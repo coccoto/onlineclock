@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 // constants
-import Path from '../constants/path'
 import Class from '../constants/class'
+import Path from '../constants/path'
 // hooks
 import useSelect from '../hooks/useSelect'
 
@@ -30,9 +30,9 @@ export default (props) => {
         })
     }
 
-    return(
+    return (
         <Router>
-            <div className={Class.cFrame.form + ' ' + 's-width-percent-90-30'}>
+            <div className={Class.component.frame.form + ' ' + 's-width-percent-90-30'}>
                 <span>
                     <select
                         className={'e-font-2 e-center-text'}

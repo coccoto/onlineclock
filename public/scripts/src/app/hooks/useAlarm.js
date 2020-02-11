@@ -4,7 +4,7 @@
  */
 export default (time) => {
 
-    let date = new Date()
+    const date = new Date()
 
     let input = new Date(
         date.getFullYear(),
@@ -30,7 +30,7 @@ const extract = (diff) => {
     diff -= minute * (1000 * 60)
     let second = Math.floor(diff / 1000)
 
-    return({
+    return ({
         hour: hour,
         minute: minute,
         second: second,

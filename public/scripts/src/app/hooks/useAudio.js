@@ -25,15 +25,11 @@ export default (path) => {
 
     const pause = () => {
         audio.pause()
-    }
-
-    const current = (second) => {
-        audio.currentTime = second
+        audio.currentTime = 0
     }
 
     return {
         play: play,
         pause: pause,
-        current: current,
     }
 }

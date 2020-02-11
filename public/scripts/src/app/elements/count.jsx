@@ -4,7 +4,7 @@ import usePad from '../hooks/usePad'
 
 export default (props) => {
 
-    return(
+    return (
         <div className={'c-frame-form-5 s-width-percent-90-30'}>
             <span 
                 className={'e-font-2'}>

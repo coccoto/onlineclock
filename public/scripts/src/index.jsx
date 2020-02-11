@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Index from './app/index'
 
-ReactDOM.render(
+ReactDOM.render (
     <Index />,
     document.getElementById('index')
 )

@@ -15,7 +15,7 @@ export default (num) => {
     React.useEffect(() => {
         let option = []
 
-        for (let i = 0; i < num; i ++) {
+        for (let i = 0; i <= num; i ++) {
             option.push(<option value={i} key={i}>{usePad(i)}</option>)
         }
 

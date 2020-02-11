@@ -1,20 +1,16 @@
-import Path from './path'
-
-const point = () => {
-
-    if (location.pathname === Path.alarm) {
-        return true
-
-    } else if (location.pathname === Path.timer) {
-        return false
-    }
-}
+import useRoute from '../hooks/useRoute'
 
 export default {
-    cFrame: {
-        form: point() ? 'c-frame-form-3' : 'c-frame-form-5',
+    component: {
+        frame: {
+            form: useRoute('alarm') ? 'c-frame-form-3' : 'c-frame-form-5',
+        },
     },
-    sWidth: {
-        percent: point() ? 's-width-percent-50' : 'e-width-percent-70',
-    },
+    element: {
+        colorBack: {
+            clock: useRoute('clock') ? 'e-color-back-theme-green' : '',
+            alarm: useRoute('alarm') ? 'e-color-back-theme-green' : '',
+            timer: useRoute('timer') ? 'e-color-back-theme-green' : '',
+        }
+    }
 }
