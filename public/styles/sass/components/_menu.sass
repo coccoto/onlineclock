@@ -1,15 +1,18 @@
 .c-menu
-    position: absolute
+    position: fixed
     bottom: 0
-    border-top: 1px solid white
+    width: 100%
+    background-color: map-get($colors, 'theme-blue')
+    border-top: 1px solid lighten(map-get($colors, 'theme-blue'), 30%)
 
     &-anchor
         @include grid('items', 11)
         height: 100%
         width: 100%
 
-        &:hover
-            background-color: lighten(map-get($colors, 'theme-blue'), 3%)
-
         @include media
             font-size: 1.25rem
+
+    &-border
+        border-right: 1px solid lighten(map-get($colors, 'theme-blue'), 30%)
+        border-left: 1px solid lighten(map-get($colors, 'theme-blue'), 30%)

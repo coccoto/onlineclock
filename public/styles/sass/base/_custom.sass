@@ -3,13 +3,15 @@
 //==============================
 
 body
-    color: white
+    color: lighten(map-get($colors, 'theme-blue'), 45%)
     background-color: map-get($colors, 'theme-blue')
+    user-select: none
 
 select
     -webkit-appearance: none
     -moz-appearance: none
     appearance: none
+    cursor: pointer
 
 option
     color: map-get($font, 'color')

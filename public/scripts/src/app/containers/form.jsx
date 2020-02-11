@@ -5,8 +5,6 @@ import Select from '../elements/select'
 
 export default (props) => {
 
-    console.log('Form')
-
     const [bool, setBool] = React.useState({submit: false})
 
     return(

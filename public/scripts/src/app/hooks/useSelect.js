@@ -8,11 +8,19 @@ import usePad from './../hooks/usePad'
  */
 export default (num) => {
 
-    const select = []
+    const [state, setState] = React.useState({
+        option: null
+    })
 
-    for(let i = 0; i <= num; i ++) {
-        select.push(<option value={i} key={i}>{usePad(i)}</option>)
-    }
+    React.useEffect(() => {
+        let option = []
 
-    return select
+        for (let i = 0; i < num; i ++) {
+            option.push(<option value={i} key={i}>{usePad(i)}</option>)
+        }
+
+        setState({option: option})
+    }, [])
+
+    return state.option
 }

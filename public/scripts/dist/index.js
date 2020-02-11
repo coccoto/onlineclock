@@ -36085,9 +36085,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/path */ "./src/app/constants/path.js");
 /* harmony import */ var _elements_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../elements/button */ "./src/app/elements/button.jsx");
 /* harmony import */ var _elements_count__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../elements/count */ "./src/app/elements/count.jsx");
-/* harmony import */ var _hooks_useClock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useClock */ "./src/app/hooks/useClock.js");
-/* harmony import */ var _hooks_useAlarm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useAlarm */ "./src/app/hooks/useAlarm.js");
-/* harmony import */ var _hooks_useTimer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useTimer */ "./src/app/hooks/useTimer.js");
+/* harmony import */ var _hooks_useAudio__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hooks/useAudio */ "./src/app/hooks/useAudio.js");
+/* harmony import */ var _hooks_useClock__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../hooks/useClock */ "./src/app/hooks/useClock.js");
+/* harmony import */ var _hooks_useAlarm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../hooks/useAlarm */ "./src/app/hooks/useAlarm.js");
+/* harmony import */ var _hooks_useTimer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../hooks/useTimer */ "./src/app/hooks/useTimer.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -36107,9 +36108,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  console.log('Action');
 
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
     hour: 0,
     minute: 0,
@@ -36124,30 +36124,49 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       loop = _React$useState4[0],
       setLoop = _React$useState4[1];
 
+  var refLoop = react__WEBPACK_IMPORTED_MODULE_0___default.a.useRef();
+  var audio = Object(_hooks_useAudio__WEBPACK_IMPORTED_MODULE_5__["default"])('/sound/notice.mp3');
   react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
     if (props.bool) {
-      setTimeout(update, 0);
-      setLoop(setInterval(update, 1000));
+      if (location.pathname === '/timer') {
+        setTime({
+          hour: props.time.hour,
+          minute: props.time.minute,
+          second: props.time.second
+        });
+        setTimeout(function () {
+          setLoop(setInterval(update, 1000));
+        }, 0);
+      } else {
+        setTimeout(update, 0);
+        setLoop(setInterval(update, 1000));
+      }
+
       return function () {
-        clearInterval(loop);
+        clearInterval(refLoop.current);
       };
     }
   }, [props.bool]);
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    refLoop.current = loop;
+  }, [loop]);
 
   var update = function update() {
     var result = [];
 
     switch (location.pathname) {
       case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].clock:
-        result = Object(_hooks_useClock__WEBPACK_IMPORTED_MODULE_5__["default"])();
+        result = Object(_hooks_useClock__WEBPACK_IMPORTED_MODULE_6__["default"])();
         break;
 
       case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].alarm:
-        result = Object(_hooks_useAlarm__WEBPACK_IMPORTED_MODULE_6__["default"])(props.time);
+        result = Object(_hooks_useAlarm__WEBPACK_IMPORTED_MODULE_7__["default"])(props.time);
+        notice(result);
         break;
 
       case _constants_path__WEBPACK_IMPORTED_MODULE_2__["default"].timer:
-        result = Object(_hooks_useTimer__WEBPACK_IMPORTED_MODULE_7__["default"])(props.time);
+        result = Object(_hooks_useTimer__WEBPACK_IMPORTED_MODULE_8__["default"])(props.time);
+        notice(result);
         break;
     }
 
@@ -36156,6 +36175,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       minute: result.minute,
       second: result.second
     });
+  };
+
+  var notice = function notice(result) {
+    if (result.hour === 0 && result.minute === 0 && result.second === 0) {
+      clearInterval(refLoop.current);
+      audio.play();
+    }
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -36168,6 +36194,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_button__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onClick: function onClick() {
       clearInterval(loop);
+      audio.pause();
+      audio.current(0);
       props.setBool();
     },
     label: props.label
@@ -36202,8 +36230,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  console.log('Form');
-
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
     submit: false
   }),
@@ -36249,7 +36275,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  console.log('Button');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: 'c-button e-margin-top-5',
     onClick: function onClick() {
@@ -36271,12 +36296,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _hooks_usePad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../hooks/usePad */ "./src/app/hooks/usePad.js");
+/* harmony import */ var _hooks_usePad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/usePad */ "./src/app/hooks/usePad.js");
  // hooks
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  console.log('Count');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: 'c-frame-form-5 s-width-percent-90-30'
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
@@ -36309,19 +36333,25 @@ __webpack_require__.r(__webpack_exports__);
  // constants
 
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
+/* harmony default export */ __webpack_exports__["default"] = (function (props) {
+  console.log(props);
+  var classSheet = {
+    clock: location.pathname === _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].clock ? 'e-color-back-theme-green' : '',
+    alarm: location.pathname === _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].alarm ? 'e-color-back-theme-green' : '',
+    timer: location.pathname === _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].timer ? 'e-color-back-theme-green' : ''
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: 'c-menu c-frame-menu e-width-percent-100'
+    className: 'c-frame-menu c-menu'
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: 'c-menu-anchor',
-    href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].clock
-  }, "Clock")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: 'e-border-right-white e-border-left-white'
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: 'c-menu-anchor',
+    className: 'c-menu-anchor' + ' ' + classSheet.alarm,
     href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].alarm
-  }, "Alarm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: 'c-menu-anchor',
+  }, "Alarm")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: 'c-menu-border'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: 'c-menu-anchor' + ' ' + classSheet.clock,
+    href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].clock
+  }, "Clock")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: 'c-menu-anchor' + ' ' + classSheet.timer,
     href: _constants_path__WEBPACK_IMPORTED_MODULE_1__["default"].timer
   }, "Timer")));
 });
@@ -36340,9 +36370,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../constants/path */ "./src/app/constants/path.js");
-/* harmony import */ var _constants_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../constants/class */ "./src/app/constants/class.js");
-/* harmony import */ var _hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../hooks/useSelect */ "./src/app/hooks/useSelect.js");
+/* harmony import */ var _constants_path__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants/path */ "./src/app/constants/path.js");
+/* harmony import */ var _constants_class__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants/class */ "./src/app/constants/class.js");
+/* harmony import */ var _hooks_useSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hooks/useSelect */ "./src/app/hooks/useSelect.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -36365,8 +36395,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function (props) {
-  console.log('Select');
-
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
     hour: 0,
     minute: 0,
@@ -36467,6 +36495,67 @@ var getDate = function getDate(date, time) {
 
 /***/ }),
 
+/***/ "./src/app/hooks/useAudio.js":
+/*!***********************************!*\
+  !*** ./src/app/hooks/useAudio.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+/**
+ * @param {string} path
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (function (path) {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(new Audio(path)),
+      _React$useState2 = _slicedToArray(_React$useState, 1),
+      audio = _React$useState2[0];
+
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    audio.addEventListener('ended', function () {
+      play();
+    });
+    return function () {
+      audio.removeEventListener('ended', function () {
+        play();
+      });
+    };
+  }, []);
+
+  var play = function play() {
+    audio.play();
+  };
+
+  var pause = function pause() {
+    audio.pause();
+  };
+
+  var current = function current(second) {
+    audio.currentTime = second;
+  };
+
+  return {
+    play: play,
+    pause: pause,
+    current: current
+  };
+});
+
+/***/ }),
+
 /***/ "./src/app/hooks/useClock.js":
 /*!***********************************!*\
   !*** ./src/app/hooks/useClock.js ***!
@@ -36521,6 +36610,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_usePad__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../hooks/usePad */ "./src/app/hooks/usePad.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
  // hooks
 
 
@@ -36530,16 +36627,28 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 /* harmony default export */ __webpack_exports__["default"] = (function (num) {
-  var select = [];
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
+    option: null
+  }),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      state = _React$useState2[0],
+      setState = _React$useState2[1];
 
-  for (var i = 0; i <= num; i++) {
-    select.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-      value: i,
-      key: i
-    }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(i)));
-  }
+  react__WEBPACK_IMPORTED_MODULE_0___default.a.useEffect(function () {
+    var option = [];
 
-  return select;
+    for (var i = 0; i < num; i++) {
+      option.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: i,
+        key: i
+      }, Object(_hooks_usePad__WEBPACK_IMPORTED_MODULE_1__["default"])(i)));
+    }
+
+    setState({
+      option: option
+    });
+  }, []);
+  return state.option;
 });
 
 /***/ }),
@@ -36612,8 +36721,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  console.log('Index');
-
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState({
     hour: 0,
     minute: 0,
@@ -36647,7 +36754,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     action: bool.run ? 's-fade-in' : 's-fade-out'
   };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: 'e-height-vh-100 e-center-items-11 e-select-none'
+    className: 'e-height-vh-100 e-center-items-11'
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: _constants_path__WEBPACK_IMPORTED_MODULE_5__["default"].clock
@@ -36695,7 +36802,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_index__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('app'));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app_index__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('index'));
 
 /***/ })
 

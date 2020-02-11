@@ -10,8 +10,6 @@ import Path from './constants/path'
 
 export default () => {
 
-    console.log('Index')
-
     const [time, setTime] = React.useState({
         hour: 0,
         minute: 0,
@@ -37,7 +35,7 @@ export default () => {
 
     return(
         <Router>
-            <div className={'e-height-vh-100 e-center-items-11 e-select-none'}>
+            <div className={'e-height-vh-100 e-center-items-11'}>
                 <Switch>
                     <Route exact path={Path.clock}>
                         <Action

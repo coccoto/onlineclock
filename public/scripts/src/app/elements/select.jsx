@@ -1,14 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 // constants
-import Path from './../constants/path'
-import Class from './../constants/class'
+import Path from '../constants/path'
+import Class from '../constants/class'
 // hooks
-import useSelect from './../hooks/useSelect'
+import useSelect from '../hooks/useSelect'
 
 export default (props) => {
-
-    console.log('Select')
 
     const [time, setTime] = React.useState({
         hour: 0,

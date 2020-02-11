@@ -5,6 +5,8 @@
 </head>
 
 <body>
-    <div id='app'></div>
+    <?php require_once 'header.php' ?>
+    <div id='index'></div>
+    <?php require_once 'footer.php' ?>
 </body>
 </html>
