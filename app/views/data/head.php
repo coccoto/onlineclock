@@ -7,6 +7,8 @@
 <meta property='og:image' content='/images/favicon/512-512.png'>
 <meta property='og:url' content='http://onlineclock.coccoto.com/'>
 <meta name='twitter:card' content='summary'>
+<meta name='twitter:image' content='/images/favicon/512-512.png'>
+<meta name='twitter:creator' content='@coccoto_mono'>
 <title><?php echo $this->property['title'] ?></title>
 <link rel='icon' type='image/png' href='/images/favicon/32-32.png'>
 <link rel='apple-touch-icon' href='/images/favicon/256-256.png'>
