@@ -28,8 +28,21 @@ export default (path) => {
         audio.currentTime = 0
     }
 
+    const muted = (bool) => {
+        audio.muted = bool
+    }
+
+    const unlock = () => {
+        muted(true)
+        play()
+        pause()
+        muted(false)
+    }
+
     return {
         play: play,
         pause: pause,
+        muted: muted,
+        unlock: unlock,
     }
 }

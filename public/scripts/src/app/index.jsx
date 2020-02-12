@@ -7,6 +7,8 @@ import Action from './containers/action'
 import Form from './containers/form'
 // elements
 import Menu from './elements/menu'
+// hooks
+import useAudio from './hooks/useAudio'
 
 export default () => {
 
@@ -18,6 +20,8 @@ export default () => {
 
     const [bool, setBool] = React.useState({run: false})
 
+    const audio = useAudio('/sound/notice.mp3')
+
     const handleSubmit = (time) => {
         setTime({
             hour: time.hour,
@@ -26,6 +30,8 @@ export default () => {
         })
 
         setBool({run: true})
+
+        audio.unlock()
     }
 
     const classSheet = {
@@ -51,6 +57,7 @@ export default () => {
                             time={time}
                             bool={bool.run}
                             setBool={() => {setBool({run: false})}}
+                            audio={audio}
                             classSheet={classSheet.action}
                             label={'OFF'} />
                     </Route>

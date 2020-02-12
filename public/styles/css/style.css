@@ -249,12 +249,14 @@ option {
 
 .e-center-items-11 {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .e-center-content-11 {
   display: grid;
-  place-content: center;
+  justify-content: center;
+  align-content: center;
 }
 
 .e-color-black {
@@ -12403,7 +12405,8 @@ option {
 
 .c-button {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   height: 3rem;
   width: 12rem;
   font-size: 1.25rem;
@@ -12413,7 +12416,8 @@ option {
 
 .c-footer {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   height: 6rem;
   width: 100%;
   border-top: 1px solid #adb9d8;
@@ -12421,13 +12425,15 @@ option {
 
 .c-frame-form-3 {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: 40% 20% 40%;
 }
 
 .c-frame-form-5 {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: 30% 5% 30% 5% 30%;
 }
 
@@ -12438,7 +12444,8 @@ option {
 
 .c-header {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -12463,7 +12470,8 @@ option {
 
 .c-menu-anchor {
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-items: center;
   height: 100%;
   width: 100%;
 }

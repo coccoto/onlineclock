@@ -6,7 +6,7 @@
 
 <body>
     <?php require_once 'header.php' ?>
-    <div id='index'></div>
+    <?php require_once 'main.php' ?>
     <?php require_once 'footer.php' ?>
 </body>
 </html>

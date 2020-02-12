@@ -7,7 +7,6 @@ import Button from '../elements/button'
 import Count from '../elements/count'
 // hooks
 import useAlarm from '../hooks/useAlarm'
-import useAudio from '../hooks/useAudio'
 import useClock from '../hooks/useClock'
 import useRoute from '../hooks/useRoute'
 import useTimer from '../hooks/useTimer'
@@ -22,8 +21,6 @@ export default (props) => {
 
     const [loop, setLoop] = React.useState()
     const refLoop = React.useRef()
-
-    const audio = useAudio('/sound/notice.mp3')
 
     React.useEffect(() => {
         if (props.bool) {
@@ -75,7 +72,7 @@ export default (props) => {
     const notice = (result) => {
         if (result.hour === 0 && result.minute === 0 && result.second === 0) {
             clearInterval(refLoop.current)
-            audio.play()
+            props.audio.play()
         }
     }
 
@@ -89,7 +86,7 @@ export default (props) => {
                     <Button
                         onClick={() => {
                             clearInterval(loop)
-                            audio.pause()
+                            props.audio.pause()
                             props.setBool()
                         }}
                         label={props.label} />
