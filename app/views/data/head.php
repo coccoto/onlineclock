@@ -1,11 +1,11 @@
 <meta charset='utf-8'>
-<meta name='author' content='cocoto'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='author' content='cocoto'>
 <meta name='description' content='The simplest clock, alarm and timer'>
-<meta property='og:url' content='http://onlineclock.coccoto.com/'>
-<meta property='og:site_name' content='Online Clock'>
+<meta property='og:title' content='Online Clock'>
 <meta property='og:description' content='The simplest clock, alarm and timer'>
 <meta property='og:image' content='/images/favicon/512-512.png'>
+<meta property='og:url' content='http://onlineclock.coccoto.com/'>
 <meta name='twitter:card' content='summary'>
 <title><?php echo $this->property['title'] ?></title>
 <link rel='icon' type='image/png' href='/images/favicon/32-32.png'>
