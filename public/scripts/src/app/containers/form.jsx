@@ -8,9 +8,7 @@ export default (props) => {
     const [bool, setBool] = React.useState({submit: false})
 
     return (
-        <form
-            className={'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet}
-            onSubmit={(event) => {event.preventDefault()}}>
+        <form className={'e-center-items-11 e-width-percent-100' + ' ' + props.classSheet}>
             <Select
                 bool={bool.submit}
                 setBool={() => {setBool({submit: false})}}
