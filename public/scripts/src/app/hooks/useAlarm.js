@@ -15,14 +15,14 @@ export default (time) => {
     )
 
     let diff = input - date
-    return extract(diff)
+    return calculate(diff)
 }
 
 /**
  * @param {number} diff
  * @return {array}
  */
-const extract = (diff) => {
+const calculate = (diff) => {
 
     let hour = Math.floor(diff / (1000 * 60 * 60))
     diff -= hour * (1000 * 60 * 60)
