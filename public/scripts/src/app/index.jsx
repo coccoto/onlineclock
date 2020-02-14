@@ -6,6 +6,7 @@ import Path from './constants/path'
 import Action from './containers/action'
 import Form from './containers/form'
 // elements
+import Footer from './elements/footer'
 import Menu from './elements/menu'
 // hooks
 import useAudio from './hooks/useAudio'
@@ -63,6 +64,7 @@ export default () => {
                     </Route>
                 </Switch>
             </div>
+            <Footer></Footer>
             <Menu></Menu>
         </Router>
     )

@@ -13,6 +13,11 @@ final class IndexView extends CommonView {
 
     private function indexMethod() {
 
+        $this->htmlMethod();
+    }
+
+    private function htmlMethod() {
+
         $this->html->setStyle('css/*');
         $this->html->setScript('dist/*');
     }

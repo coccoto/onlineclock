@@ -1,9 +1,9 @@
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='author' content='cocoto'>
-<meta name='description' content='The simplest clock, alarm and timer'>
+<meta name='description' content='The simplest clock, alarm and timer.'>
 <meta property='og:title' content='Online Clock'>
-<meta property='og:description' content='The simplest clock, alarm and timer'>
+<meta property='og:description' content='The simplest clock, alarm and timer.'>
 <meta property='og:image' content='/images/favicon/512-512.png'>
 <meta property='og:url' content='http://clock.coccoto.com/'>
 <meta name='twitter:card' content='summary'>
