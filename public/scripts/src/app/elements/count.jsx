@@ -6,10 +6,10 @@ export default (props) => {
 
     React.useEffect(() => {
         if (props.bool) {
-            document.title = usePad(props.time.hour) + ' : ' + usePad(props.time.minute) + ' : ' + usePad(props.time.second) + ' - Online Clock'
+            document.title = usePad(props.time.hour) + ' : ' + usePad(props.time.minute) + ' : ' + usePad(props.time.second) + ' - online clock'
 
         } else {
-            document.title = 'Online Clock'
+            document.title = 'online clock'
         }
     })
 

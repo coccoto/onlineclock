@@ -15,6 +15,6 @@ abstract class CommonController extends BaseController {
 
     private function commonMethod() {
 
-        $this->viewInstance->push('title', 'Online Clock');
+        $this->viewInstance->push('title', 'online clock');
     }
 }
