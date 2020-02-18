@@ -1,4 +1,2 @@
-/vendor/
-/composer.lock
-
-/conf/database.php
+/node_modules/
+/package-lock.json
