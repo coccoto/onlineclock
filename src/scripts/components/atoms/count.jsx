@@ -4,6 +4,10 @@ import styles from 'styles/components/atoms/count.module.sass'
 
 export default (props) => {
 
+    React.useEffect(() => {
+        document.title = String(props.time.hour).padStart(2, 0) + ' : ' + String(props.time.minute).padStart(2, 0) + ' : ' + String(props.time.second).padStart(2, 0)
+    })
+
     const Element = (props) => {
         return (
             <div className={styles['time']}>
