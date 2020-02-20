@@ -8,4 +8,4 @@ The simplest clock app.
 
 ## Screenshot
 
-![onlineclock](https://user-images.githubusercontent.com/60543825/74903581-b1499c00-53ec-11ea-82cb-d3052c12d36d.png)
+![onlineclock](https://user-images.githubusercontent.com/60543825/74903793-62e8cd00-53ed-11ea-8170-580e386f9c7c.png)
