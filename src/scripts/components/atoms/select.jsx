@@ -50,7 +50,7 @@ export default React.forwardRef((props, ref) => {
                         className={styles['select']}
                         name={'minute'}
                         onChange={handleChange}>
-                    {select.create(23)}</select>
+                    {select.create(59)}</select>
                 </div>
                 <Route exact path={Path.timer}>
                     <div className={styles['select-colon']}>：</div>
@@ -59,7 +59,7 @@ export default React.forwardRef((props, ref) => {
                             className={styles['select']}
                             name={'second'}
                             onChange={handleChange}>
-                        {select.create(23)}</select>
+                        {select.create(59)}</select>
                     </div>
                 </Route>
             </div>
