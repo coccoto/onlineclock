@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 // scripts
-import App from 'scripts/index'
+import App from '@/scripts/index'
 // styles
-import 'styles/reset.sass'
+import '@/styles/default.sass'
 
 ReactDom.render (
     <App></App>,

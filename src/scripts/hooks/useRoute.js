@@ -1,5 +1,5 @@
 // resources
-import Path from 'scripts/resources/path'
+import Path from '@/scripts/resources/path'
 
 /**
  * @return {boolean}

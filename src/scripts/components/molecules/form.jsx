@@ -1,7 +1,7 @@
 import React from 'react'
 // atoms
-import Button from 'scripts/components/atoms/button'
-import Select from 'scripts/components/atoms/select'
+import Button from '@/scripts/components/atoms/button'
+import Select from '@/scripts/components/atoms/select'
 
 export default (props) => {
 

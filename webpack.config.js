@@ -13,10 +13,9 @@ module.exports = () => {
         },
         resolve: {
             extensions: ['*', '.js', '.jsx'],
-            modules: [
-                path.resolve(__dirname, 'src'),
-                path.resolve(__dirname, 'node_modules')
-            ]
+            alias: {
+                '@': path.resolve(__dirname, 'src'),
+            }
         },
         plugins: [
             new HtmlWebpackPlugin({
@@ -25,6 +24,7 @@ module.exports = () => {
             })
         ],
         devServer: {
+            contentBase: path.resolve(__dirname, 'dist'),
             open: true,
             historyApiFallback: true,
             watchContentBase: true,

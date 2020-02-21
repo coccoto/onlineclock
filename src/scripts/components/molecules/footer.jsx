@@ -1,6 +1,6 @@
 import React from 'react'
 // styles
-import styles from 'styles/components/molecules/footer.module.sass'
+import styles from '@/styles/components/molecules/footer.module.sass'
 
 export default () => {
 

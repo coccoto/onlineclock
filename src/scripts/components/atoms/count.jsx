@@ -1,6 +1,6 @@
 import React from 'react'
 // styles
-import styles from 'styles/components/atoms/count.module.sass'
+import styles from '@/styles/components/atoms/count.module.sass'
 
 export default (props) => {
 
