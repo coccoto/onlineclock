@@ -12,7 +12,7 @@ import useAudio from '@/scripts/hooks/useAudio'
 // resources
 import sound from '@/resources/sounds/notice.mp3'
 // styles
-import styles from '@/styles/index.module.sass'
+import styles from '@/styles/app.module.sass'
 
 export default () => {
 

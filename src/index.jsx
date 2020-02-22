@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 // scripts
-import App from '@/scripts/index'
+import App from '@/scripts/app'
 // styles
 import '@/styles/default.sass'
 

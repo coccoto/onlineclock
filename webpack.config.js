@@ -1,7 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = () => {
+module.exports = (env, argv) => {
+
+    const Development = argv.mode === 'development';
 
     return {
         entry: {
@@ -19,8 +21,10 @@ module.exports = () => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: 'src/index.html',
-                minify: {collapseWhitespace: true}
+                template: path.resolve(__dirname, 'src', 'index.html'),
+                minify: {
+                    collapseWhitespace: Development ? false : true
+                }
             })
         ],
         devServer: {
