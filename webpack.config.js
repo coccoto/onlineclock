@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = (env, argv) => {
-
     const Development = argv.mode === 'development';
 
     return {
@@ -13,11 +12,21 @@ module.exports = (env, argv) => {
             path: path.resolve(__dirname, 'dist'),
             filename: 'index.js'
         },
+        devtool: Development ? 'source-map' : 'none',
         resolve: {
             extensions: ['*', '.js', '.jsx'],
             alias: {
                 '@': path.resolve(__dirname, 'src'),
             }
+        },
+        devServer: {
+            open: true,
+            contentBase: path.resolve(__dirname, 'dist'),
+            watchContentBase: true,
+            historyApiFallback: true,
+        },
+        module: {
+            rules: rules
         },
         plugins: [
             new HtmlWebpackPlugin({
@@ -27,66 +36,59 @@ module.exports = (env, argv) => {
                 }
             })
         ],
-        devServer: {
-            contentBase: path.resolve(__dirname, 'dist'),
-            open: true,
-            historyApiFallback: true,
-            watchContentBase: true,
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.(js|jsx)$/,
-                    exclude: /node_modules/,
-                    loader: 'babel-loader',
-                },{
-                    test: /\.(sass)$/,
-                    exclude: /\.(module)\.(sass)$/,
-                    use: [
-                        'style-loader', 'css-loader', {
-                            loader: 'postcss-loader',
-                            options: {plugins: [require('autoprefixer')]}
-                        }, 'sass-loader', {
-                            loader: 'sass-resources-loader',
-                            options: {
-                                resources: [
-                                    (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
-                                ]
-                            }
-                        }
-                    ]
-                },{
-                    test: /\.(module)\.(sass)$/,
-                    use: [
-                        'style-loader', {
-                            loader: 'css-loader',
-                            options: {modules: true}
-                        },{
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: [require('autoprefixer')]
-                            }
-                        }, 'sass-loader', {
-                            loader: 'sass-resources-loader',
-                            options: {
-                                resources: [
-                                    (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
-                                ]
-                            }
-                        }
-                    ]
-                },{
-                    test: /\.(html)$/,
-                    loader: 'html-loader'
-                },{
-                    test: /\.(mp3)$/,
-                    loader: 'file-loader',
-                    options: {
-                        name: '[name].[ext]',
-                        outputPath: 'resources/sounds'
-                    }
-                }
-            ]
-        }
     }
 }
+
+const rules = [
+    {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+    },{
+        test: /\.(sass)$/,
+        exclude: /\.(module)\.(sass)$/,
+        use: [
+            'style-loader', 'css-loader', {
+                loader: 'postcss-loader',
+                options: {plugins: [require('autoprefixer')]}
+            }, 'sass-loader', {
+                loader: 'sass-resources-loader',
+                options: {
+                    resources: [
+                        (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
+                    ]
+                }
+            }
+        ]
+    },{
+        test: /\.(module)\.(sass)$/,
+        use: [
+            'style-loader', {
+                loader: 'css-loader',
+                options: {modules: true}
+            },{
+                loader: 'postcss-loader',
+                options: {
+                    plugins: [require('autoprefixer')]
+                }
+            }, 'sass-loader', {
+                loader: 'sass-resources-loader',
+                options: {
+                    resources: [
+                        (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
+                    ]
+                }
+            }
+        ]
+    },{
+        test: /\.(html)$/,
+        loader: 'html-loader'
+    },{
+        test: /\.(mp3)$/,
+        loader: 'file-loader',
+        options: {
+            name: '[name].[ext]',
+            outputPath: 'resources/sounds'
+        }
+    }
+]
