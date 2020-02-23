@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
     const Development = argv.mode === 'development';
@@ -34,7 +35,14 @@ module.exports = (env, argv) => {
                 minify: {
                     collapseWhitespace: Development ? false : true
                 }
-            })
+            }),
+            new CopyWebpackPlugin([
+                {
+                    from: '*',
+                    to: 'resources/images',
+                }],
+                {context: 'src/resources/images'}
+            )
         ],
     }
 }
