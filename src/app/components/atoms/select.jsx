@@ -1,12 +1,12 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-// resources
-import Path from '@/scripts/resources/path'
 // hooks
-import useRoute from '@/scripts/hooks/useRoute'
-import useSelect from '@/scripts/hooks/useSelect'
+import useRoute from '@/app/hooks/useRoute'
+import useSelect from '@/app/hooks/useSelect'
+// resources
+import Path from '@/app/resources/path'
 // styles
-import styles from '@/styles/components/atoms/select.module.sass'
+import styles from '@/app/styles/components/atoms/select.module.sass'
 
 export default React.forwardRef((props, ref) => {
 

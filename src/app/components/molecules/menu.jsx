@@ -1,8 +1,8 @@
 import React from 'react'
 // resources
-import Path from '@/scripts/resources/path'
+import Path from '@/app/resources/path'
 // styles
-import styles from '@/styles/components/molecules/menu.module.sass'
+import styles from '@/app/styles/components/molecules/menu.module.sass'
 
 export default () => {
 

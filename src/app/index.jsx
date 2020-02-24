@@ -1,18 +1,18 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // molecules
-import Action from '@/scripts/components/molecules/action'
-import Footer from '@/scripts/components/molecules/footer'
-import Form from '@/scripts/components/molecules/form'
-import Menu from '@/scripts/components/molecules/menu'
-// resources
-import Path from '@/scripts/resources/path'
+import Action from '@/app/components/molecules/action'
+import Footer from '@/app/components/molecules/footer'
+import Form from '@/app/components/molecules/form'
+import Menu from '@/app/components/molecules/menu'
 // hooks
-import useAudio from '@/scripts/hooks/useAudio'
+import useAudio from '@/app/hooks/useAudio'
+// resources
+import Path from '@/app/resources/path'
+// styles
+import styles from '@/app/styles/app.module.sass'
 // resources
 import sound from '@/resources/sounds/notice.mp3'
-// styles
-import styles from '@/styles/app.module.sass'
 
 export default () => {
 

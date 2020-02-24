@@ -1,6 +1,6 @@
 import React from 'react'
 // styles
-import styles from '@/styles/components/atoms/button.module.sass'
+import styles from '@/app/styles/components/atoms/button.module.sass'
 
 export default (props) => {
 

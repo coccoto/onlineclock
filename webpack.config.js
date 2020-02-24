@@ -16,6 +16,9 @@ module.exports = (env, argv) => {
         devtool: Development ? 'source-map' : 'none',
         resolve: {
             extensions: ['*', '.js', '.jsx'],
+            modules: [
+                path.resolve(__dirname, 'node_modules')
+            ],
             alias: {
                 '@': path.resolve(__dirname, 'src'),
             }
@@ -63,7 +66,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
+                        (path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*'))
                     ]
                 }
             }
@@ -83,7 +86,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        (path.resolve(__dirname, 'src', 'styles', 'resources', '*'))
+                        (path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*'))
                     ]
                 }
             }

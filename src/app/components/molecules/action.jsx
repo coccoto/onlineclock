@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 // atoms
-import Button from '@/scripts/components/atoms/button'
-import Count from '@/scripts/components/atoms/count'
+import Button from '@/app/components/atoms/button'
+import Count from '@/app/components/atoms/count'
 // hooks
-import useAlarm from '@/scripts/hooks/useAlarm'
-import useRoute from '@/scripts/hooks/useRoute'
-import useTimer from '@/scripts/hooks/useTimer'
+import useAlarm from '@/app/hooks/useAlarm'
+import useRoute from '@/app/hooks/useRoute'
+import useTimer from '@/app/hooks/useTimer'
 // resources
-import Path from '@/scripts/resources/path'
+import Path from '@/app/resources/path'
 
 export default React.forwardRef((props, ref) => {
 
