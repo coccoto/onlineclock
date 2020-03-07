@@ -1,11 +1,8 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import App from '@/app/index'
-import viewportUnitsBuggyfill from 'viewport-units-buggyfill'
 // styles
 import '@/app/styles/default.sass'
-
-viewportUnitsBuggyfill.init()
 
 ReactDom.render (
     <App></App>,
