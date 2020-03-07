@@ -42,9 +42,9 @@ module.exports = (env, argv) => {
             new CopyWebpackPlugin([
                 {
                     from: '*',
-                    to: 'resources/images',
+                    to: 'resources/favicons',
                 }],
-                {context: 'src/resources/images'}
+                {context: 'src/resources/favicons'}
             )
         ],
     }
