@@ -10,7 +10,7 @@ import useAudio from '@/app/hooks/useAudio'
 // resources
 import Path from '@/app/resources/path'
 // styles
-import styles from '@/app/styles/app.module.sass'
+import styles from '@/app/styles/index.module.sass'
 // resources
 import sound from '@/resources/sounds/notice.mp3'
 
