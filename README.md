@@ -1,4 +1,4 @@
-# online clock
+# onlineclock
 
 The simplest clock app.
 
