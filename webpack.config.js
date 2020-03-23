@@ -19,9 +19,7 @@ module.exports = (env, argv) => {
             modules: [
                 path.resolve(__dirname, 'node_modules')
             ],
-            alias: {
-                '@': path.resolve(__dirname, 'src'),
-            }
+            alias: {'@': path.resolve(__dirname, 'src')}
         },
         devServer: {
             open: true,
