@@ -2,7 +2,7 @@ import React from 'react'
 // resources
 import Path from '@/app/resources/path'
 // styles
-import styles from '@/app/styles/components/molecules/menu.module.sass'
+import styles from '@/app/styles/components/templates/menu.module.sass'
 
 export default () => {
 

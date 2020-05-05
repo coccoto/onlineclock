@@ -1,6 +1,6 @@
 # onlineclock
 
-The simplest clock app.
+onlineclock is a simple and beautiful clock, alarm and timer app.
 
 ## Used
 

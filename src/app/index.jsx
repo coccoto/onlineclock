@@ -2,9 +2,10 @@ import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // molecules
 import Action from '@/app/components/molecules/action'
-import Footer from '@/app/components/molecules/footer'
 import Form from '@/app/components/molecules/form'
-import Menu from '@/app/components/molecules/menu'
+// templates
+import Footer from '@/app/components/templates/footer'
+import Menu from '@/app/components/templates/menu'
 // hooks
 import useAudio from '@/app/hooks/useAudio'
 // resources
