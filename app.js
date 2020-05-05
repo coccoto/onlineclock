@@ -3,10 +3,11 @@ const path = require('path')
 
 const app = express()
 
+// static setup
 app.use(express.static(path.resolve(__dirname, 'dist')))
 
-app.get('*', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
 })
 
 app.listen(3000, () => {
