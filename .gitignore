@@ -1,3 +1,33 @@
-/node_modules
+#
+# log files
+#
+logs/
+*.log
+
+#
+# builded files
+#
+/dist/
+
+#
+# dotenv files
+#
+#.env
+
+#
+# Node.js files
+#
+/node_modules/
 /package-lock.json
-/dist
+
+#
+# PHP files
+#
+#/vendor/
+#/composer.lock
+
+#
+# OS generated files
+#
+.DS_Store
+Thumbs.db

@@ -1,18 +1,23 @@
-const express = require('express')
-const path = require('path')
+const Express = require('express')
 
-const app = express()
+/**
+ * routes setup
+ */
+const Router = require(ROOT + '/routes/index')
 
-const hostname = 'localhost'
-const port = 3000
+const app = Express()
 
-// static setup
-app.use(express.static(path.resolve(__dirname, 'dist')))
+/**
+ * static setup
+ */
+app.use(Express.static(ROOT + '/dist'))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
-})
+/**
+ * request option
+ */
+app.use(Express.json())
+app.use(Express.urlencoded({ extended: true }))
 
-app.listen(port, hostname, () => {
-    console.log('Server running at http://' + hostname + ':' + port　+　'/')
-})
+Router(app)
+
+module.exports = app

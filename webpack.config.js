@@ -1,4 +1,4 @@
-const path = require('path')
+const Path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
@@ -7,23 +7,23 @@ module.exports = (env, argv) => {
 
     return {
         entry: {
-            index: path.resolve(__dirname, 'src', 'index.jsx')
+            index: Path.resolve(__dirname, 'src', 'index.jsx')
         },
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: Path.resolve(__dirname, 'dist'),
             filename: 'index.js'
         },
         devtool: Development ? 'source-map' : 'none',
         resolve: {
             extensions: ['*', '.js', '.jsx'],
             modules: [
-                path.resolve(__dirname, 'node_modules')
+                Path.resolve(__dirname, 'node_modules')
             ],
-            alias: {'@': path.resolve(__dirname, 'src')}
+            alias: {'@': Path.resolve(__dirname, 'src')}
         },
         devServer: {
             open: true,
-            contentBase: path.resolve(__dirname, 'dist'),
+            contentBase: Path.resolve(__dirname, 'dist'),
             watchContentBase: true,
             historyApiFallback: true,
         },
@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
         },
         plugins: [
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src', 'index.html'),
+                template: Path.resolve(__dirname, 'src', 'index.html'),
                 minify: {
                     collapseWhitespace: Development ? false : true
                 }
@@ -64,7 +64,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
+                        Path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
                     ]
                 }
             }
@@ -84,7 +84,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
+                        Path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
                     ]
                 }
             }
