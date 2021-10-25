@@ -1,29 +1,36 @@
-const Path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+const htmlWebpackPlugin = require('html-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = (env, argv) => {
-    const Development = argv.mode === 'development';
+
+    const ENTRY_FILE = 'index.jsx'
+    const BUNDLE_FILE = 'index.js'
+
+    const SOURCE = path.resolve(__dirname, 'src')
+    const OUTPUT = path.resolve(__dirname, 'dist')
+
+    const IS_DEVELOPMENT = argv.mode === 'development'
 
     return {
         entry: {
-            index: Path.resolve(__dirname, 'src', 'index.jsx')
+            index: path.resolve(SOURCE, ENTRY_FILE)
         },
         output: {
-            path: Path.resolve(__dirname, 'dist'),
-            filename: 'index.js'
+            path: path.resolve(OUTPUT),
+            filename: BUNDLE_FILE
         },
-        devtool: Development ? 'source-map' : 'none',
+        devtool: IS_DEVELOPMENT ? 'source-map' : 'none',
         resolve: {
             extensions: ['*', '.js', '.jsx'],
             modules: [
-                Path.resolve(__dirname, 'node_modules')
+                path.resolve(__dirname, 'node_modules')
             ],
-            alias: {'@': Path.resolve(__dirname, 'src')}
+            alias: {'@': path.resolve(SOURCE)}
         },
         devServer: {
             open: true,
-            contentBase: Path.resolve(__dirname, 'dist'),
+            contentBase: path.resolve(OUTPUT),
             watchContentBase: true,
             historyApiFallback: true,
         },
@@ -31,13 +38,13 @@ module.exports = (env, argv) => {
             rules: rules
         },
         plugins: [
-            new HtmlWebpackPlugin({
-                template: Path.resolve(__dirname, 'src', 'index.html'),
+            new htmlWebpackPlugin({
+                template: path.resolve(SOURCE, 'index.html'),
                 minify: {
-                    collapseWhitespace: Development ? false : true
+                    collapseWhitespace: IS_DEVELOPMENT ? false : true
                 }
             }),
-            new CopyWebpackPlugin([
+            new copyWebpackPlugin([
                 {
                     from: '*',
                     to: 'resources/favicons',
@@ -64,7 +71,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        Path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
+                        path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
                     ]
                 }
             }
@@ -84,7 +91,7 @@ const rules = [
                 loader: 'sass-resources-loader',
                 options: {
                     resources: [
-                        Path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
+                        path.resolve(__dirname, 'src', 'app', 'styles', 'resources', '*.sass')
                     ]
                 }
             }
