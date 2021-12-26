@@ -1,10 +1,10 @@
 import React from 'react'
-import {addDays, addMonths} from 'date-fns'
+import {addYears, addMonths, addDays} from 'date-fns'
 
 export default () => {
 
-    const [bool] = React.useState({
-        advanceMonth: false
+    const [bool, setBool] = React.useState({
+        advanceMonth: false,
     })
 
     const date = new Date()
@@ -17,11 +17,23 @@ export default () => {
         return false
     }
 
+    const getYear = (month) => {
+
+        if (month === 0) {
+            const tomrrow = addYears(date, 1)
+            return tomrrow.getFullYear()
+        }
+        return date.getFullYear()
+    }
+
     const getMonth = () => {
 
         if (bool.advanceMonth) {
+            setBool({advanceMonth: false})
+
             const tomrrow = addMonths(date, 1)
-            return tomrrow.getMonth()
+            const tomorrowDate = tomrrow.getMonth()
+            return tomorrowDate
         }
         return date.getMonth()
     }
@@ -33,7 +45,9 @@ export default () => {
             const tomorrowDate = tomorrow.getDate()
 
             if (tomorrowDate === 1) {
-                bool.advanceMonth = true
+                setBool({advanceMonth: true})
+            } else {
+                setBool({advanceMonth: false})
             }
             return tomorrowDate
         }
@@ -41,7 +55,8 @@ export default () => {
     }
 
     return {
-        getDate: getDate,
+        getYear: getYear,
         getMonth: getMonth,
+        getDate: getDate,
     }
 }

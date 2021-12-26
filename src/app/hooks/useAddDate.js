@@ -13,7 +13,12 @@ import {addHours, addMinutes, addSeconds} from 'date-fns'
         resultDate = addMinutes(resultDate, time.minute)
         resultDate = addSeconds(resultDate, time.second)
 
-        return resultDate
+        return {
+            date: 0,
+            hour: resultDate.getHours(),
+            minute: resultDate.getMinutes(),
+            second: resultDate.getSeconds(),
+        }
     }
 
     return {

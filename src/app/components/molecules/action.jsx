@@ -21,12 +21,11 @@ export default React.forwardRef((props, ref) => {
                 const targetDate = useAddDate(date).add(time)
 
                 setTime({
-                    date: targetDate.getDate(),
-                    hour: targetDate.getHours(),
-                    minute: targetDate.getMinutes(),
-                    second: targetDate.getSeconds(),
+                    date: advanceDate.getDate(targetDate),
+                    hour: targetDate.hour,
+                    minute: targetDate.minute,
+                    second: targetDate.second,
                 })
-
             } else {
                 setTime({
                     date: advanceDate.getDate(time),
@@ -90,7 +89,6 @@ export default React.forwardRef((props, ref) => {
         const date = new Date()
 
         if (route.clock) {
-
             result = { // current time
                 date: date.getDate(),
                 hour: date.getHours(),
