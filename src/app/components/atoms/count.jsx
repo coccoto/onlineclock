@@ -4,7 +4,7 @@ import styles from '@/app/styles/components/atoms/count.module.sass'
 
 export default (props) => {
 
-    const Element = (props) => {
+    const TimeElement = (props) => {
         return (
             <div className={styles['time']}>
                 {props.time}
@@ -14,11 +14,11 @@ export default (props) => {
 
     return (
         <div className={styles['container']}>
-            <Element time={String(props.time.hour).padStart(2, 0)}></Element>
+            <TimeElement time={String(props.time.hour).padStart(2, 0)}></TimeElement>
             <div className={styles['time-colon']}>：</div>
-            <Element time={String(props.time.minute).padStart(2, 0)}></Element>
+            <TimeElement time={String(props.time.minute).padStart(2, 0)}></TimeElement>
             <div className={styles['time-colon']}>：</div>
-            <Element time={String(props.time.second).padStart(2, 0)}></Element>
+            <TimeElement time={String(props.time.second).padStart(2, 0)}></TimeElement>
         </div>
     )
 }

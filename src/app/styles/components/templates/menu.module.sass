@@ -20,7 +20,15 @@
     @include media()
         font-size: 1.75rem
 
+    &-selected
+        @extend .list
+        background-color: map-get($colors, blue-5)
+
     &-center
         @extend .list
         border-right: 1px solid map-get($colors, blue-40)
         border-left: 1px solid map-get($colors, blue-40)
+
+        &-selected
+            @extend .list-center
+            background-color: map-get($colors, blue-5)

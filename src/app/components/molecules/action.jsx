@@ -97,7 +97,7 @@ export default React.forwardRef((props, ref) => {
             }
 
         } else if (route.alarm || route.timer) {
-            result = useCount(date, advanceDate).calculate(time) // time remaining
+            result = useCount(date, advanceDate).calculate(time, Path) // time remaining
             notice(result)
         }
         return result

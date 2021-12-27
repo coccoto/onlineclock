@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 // hooks
 import useRoute from '@/app/hooks/useRoute'
 import useCreateSelect from '@/app/hooks/useCreateSelect'
-// resources
-import Path from '@/app/resources/path'
 // styles
 import styles from '@/app/styles/components/atoms/select.module.sass'
 
@@ -23,7 +21,6 @@ export default React.forwardRef((props, ref) => {
         second: 0,
     })
 
-    const route = useRoute()
     const createSelect = useCreateSelect()
 
     const handleChange = (event) => {
@@ -37,7 +34,7 @@ export default React.forwardRef((props, ref) => {
 
     return (
         <Router>
-            <div className={route.alarm ? styles['container-alarm'] : styles['container-timer']}>
+            <div className={styles['container']}>
                 <div>
                     <select
                         className={styles['select']}
@@ -53,16 +50,14 @@ export default React.forwardRef((props, ref) => {
                         onChange={handleChange}>
                     {createSelect.create(59)}</select>
                 </div>
-                <Route exact path={Path.timer}>
-                    <div className={styles['select-colon']}>：</div>
-                    <div>
-                        <select
-                            className={styles['select']}
-                            name={'second'}
-                            onChange={handleChange}>
-                        {createSelect.create(59)}</select>
-                    </div>
-                </Route>
+                <div className={styles['select-colon']}>：</div>
+                <div>
+                    <select
+                        className={styles['select']}
+                        name={'second'}
+                        onChange={handleChange}>
+                    {createSelect.create(59)}</select>
+                </div>
             </div>
         </Router>
     )

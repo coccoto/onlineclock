@@ -11,7 +11,7 @@ export default () => {
 
     const isAdvance = (time) => {
 
-        if (time.hour < date.getHours() || (time.hour == date.getHours() && time.minute <= date.getMinutes())) {
+        if (time.hour < date.getHours() || (time.hour == date.getHours() && time.minute <= date.getMinutes() && time.second < date.getSeconds())) {
             return true
         }
         return false
