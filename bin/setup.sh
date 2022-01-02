@@ -2,9 +2,11 @@
 set -eu
 
 function npmInstall() {
+    cd ..
     cd $1
     npm install
     cd ..
+    return 0
 }
 
 npmInstall client
