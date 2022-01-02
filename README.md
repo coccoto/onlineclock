@@ -6,6 +6,7 @@ onlineclock is a simple and beautiful clock, alarm and timer app.
 
 - Express
 - React
+- MySQL
 
 ## Screenshot
 
