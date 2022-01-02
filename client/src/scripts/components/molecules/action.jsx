@@ -19,9 +19,6 @@ export default React.forwardRef((props, ref) => {
             if (props.pathManager.isLocation.timer) {
                 const targetDate = addTimeModel(date).add(time)
 
-                console.log('00')
-                console.log(targetDate)
-
                 setTime({
                     date: advanceDate.getDate(targetDate),
                     hour: targetDate.hour,

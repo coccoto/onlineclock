@@ -16,9 +16,6 @@ export default (date) => {
             time.minute,
             time.second,
         )
-        console.log(date)
-        console.log(targetDate)
-
         if (pathManager.isLocation.timer) {
             targetDate = addSeconds(targetDate, 1) // add 1 second
         }
