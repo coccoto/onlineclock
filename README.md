@@ -10,4 +10,4 @@ onlineclock is a simple and beautiful clock, alarm and timer app.
 
 ## Screenshot
 
-![onlineclock](https://user-images.githubusercontent.com/60543825/147887085-632efa53-ff42-4a1a-a6cb-e2dadf868a03.png)
+![onlineclock](https://user-images.githubusercontent.com/60543825/147887154-e78a2d83-f5c6-4cf2-b80c-e2e1f8c048ce.png)
