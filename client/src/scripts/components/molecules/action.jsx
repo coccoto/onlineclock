@@ -101,7 +101,7 @@ export default React.forwardRef((props, ref) => {
     }
 
     const notice = (result) => {
-        if (result.date !== 0 || (result.hour === 0 && result.minute === 0 && result.second === 0)) {
+        if (result.date !== 0 || (result.hour === 0 && result.minute === 0 && result.second <= 0)) {
             clearInterval(refLoop.current)
             refLoop.current = 0
             props.audio.play(0)
