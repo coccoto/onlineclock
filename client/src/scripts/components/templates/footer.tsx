@@ -3,11 +3,11 @@ import React from 'react'
 // styles
 import styles from '@/styles/components/templates/footer.module.sass'
 
-export default () => {
+export default (): JSX.Element  => {
 
     return (
         <footer className={styles['container']}>
-            <p>© 2020 coccoto</p>
+            <p>© 2022 coccoto</p>
         </footer>
     )
 }

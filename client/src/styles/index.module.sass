@@ -1,19 +1,2 @@
-.container
-    @include grid()
-    height: 100%
-
-.fadein
-    @include grid()
-    width: 100%
-    animation: fadein 2s
-
-    @keyframes fadein
-        0%
-            display: none
-            opacity: 0
-        100%
-            display: grid
-            opacity: 1
-
-.fadeout
-    display: none
+@use 'utils/colors'
+@use 'utils/mixins'

@@ -1,7 +1,7 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
-const ENTRY_FILE = 'index.jsx'
+const ENTRY_FILE = 'index.tsx'
 const BUNDLE_FILE = 'index.js'
 
 const SOURCE = path.resolve(__dirname, 'src')
@@ -9,33 +9,36 @@ const OUTPUT = path.resolve(__dirname, 'dist')
 
 module.exports = (env, argv) => {
 
-    const IS_DEVELOPMENT = argv.mode === 'development'
+    const IS_DEVELOPMENT = argv.mode === 'development';
 
     return {
         entry: {
-            index: path.resolve(SOURCE, ENTRY_FILE)
+            index: path.resolve(SOURCE, ENTRY_FILE),
         },
         output: {
             path: path.resolve(OUTPUT),
-            filename: BUNDLE_FILE
+            filename: BUNDLE_FILE,
         },
+        devtool: IS_DEVELOPMENT ? 'inline-source-map' : IS_DEVELOPMENT,
         resolve: {
-            extensions: ['*', '.js', '.jsx'],
+            extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
             modules: [
                 path.resolve(__dirname, 'node_modules')
             ],
-            alias: {'@': path.resolve(SOURCE)}
+            alias: {
+                '@': path.resolve(SOURCE),
+            },
         },
         devServer: {
             open: true,
             static: {
-                directory: path.resolve(OUTPUT),
-                watch: true,
+                directory: OUTPUT,
+                watch: true
             },
             historyApiFallback: true,
         },
         module: {
-            rules: rules
+            rules: RULES
         },
         plugins: [
             new htmlWebpackPlugin({
@@ -48,11 +51,11 @@ module.exports = (env, argv) => {
     }
 }
 
-const rules = [
+const RULES = [
     {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'ts-loader',
     },{
         test: /\.(sass)$/,
         exclude: /\.(module)\.(sass)$/,
@@ -61,15 +64,17 @@ const rules = [
                 loader: 'postcss-loader',
                 options: {
                     postcssOptions: {
-                        plugins: [require('autoprefixer')]
+                        plugins: [
+                            require('autoprefixer')
+                        ]
                     }
-                }
-            }, 'sass-loader', {
-                loader: 'sass-resources-loader',
+                },
+            },{
+                loader: 'sass-loader',
                 options: {
-                    resources: [
-                        path.resolve(SOURCE, 'styles', 'resources', '*.sass')
-                    ]
+                    sassOptions: {
+                        includePaths: [path.resolve(SOURCE, 'styles')],
+                    }
                 }
             }
         ]
@@ -77,33 +82,28 @@ const rules = [
         test: /\.(module)\.(sass)$/,
         use: [
             'style-loader', {
-                loader: 'css-loader',
+                loader: 'css-loader?modules',
                 options: {modules: true}
             },{
                 loader: 'postcss-loader',
                 options: {
                     postcssOptions: {
-                        plugins: [require('autoprefixer')]
+                        plugins: [
+                            require('autoprefixer')
+                        ]
                     }
-                }
-            }, 'sass-loader', {
-                loader: 'sass-resources-loader',
+                },
+            },{
+                loader: 'sass-loader',
                 options: {
-                    resources: [
-                        path.resolve(SOURCE, 'styles', 'resources', '*.sass')
-                    ]
+                    sassOptions: {
+                        includePaths: [path.resolve(SOURCE, 'styles')],
+                    }
                 }
             }
         ]
     },{
         test: /\.(html)$/,
         loader: 'html-loader'
-    },{
-        test: /\.(mp3)$/,
-        loader: 'file-loader',
-        options: {
-            name: '[name].[ext]',
-            outputPath: 'resources/sounds'
-        }
     }
 ]
