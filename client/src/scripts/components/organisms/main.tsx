@@ -12,8 +12,8 @@ export default () => {
 
     return (
         <div className={styles['container']}>
+            <Clock></Clock>
             <Context.Provider>
-                <Clock></Clock>
                 <Alarm></Alarm>
             </Context.Provider>
         </div>

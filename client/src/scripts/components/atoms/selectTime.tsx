@@ -12,7 +12,6 @@ export default (props: Props): JSX.Element => {
         let options: JSX.Element[] = []
 
         for (let i: number = 0; i < productionNum; i ++) {
-
             if (props.selectedNum !== i) {
                 options.push(<option value={i} key={i}>{String(i).padStart(2, '0')}</option>)
             } else {

@@ -8,6 +8,6 @@ type Props = {
 export default (props: Props): JSX.Element  => {
 
     return (
-        <div>{props.number}</div>
+        <div>{String(props.number).padStart(2, '0')}</div>
     )
 }
