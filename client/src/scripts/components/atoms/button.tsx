@@ -3,19 +3,19 @@ import React from 'react'
 
 type Props = {
     isRun: boolean,
-    setIsRun: React.Dispatch<React.SetStateAction<boolean>>,
+    onSubmit: () => void,
 }
 
 export default (props: Props): JSX.Element  => {
 
     const getLabel = (): string => {
-        return ! props.isRun ? 'SET' : 'OFF'
+        return props.isRun ? 'OFF' : 'SET'
     }
 
     return (
         <div
             onClick={() => {
-                props.setIsRun(! props.isRun)
+                props.onSubmit()
             }}
         >{getLabel()}</div>
     )

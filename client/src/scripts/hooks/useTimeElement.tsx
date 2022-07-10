@@ -13,8 +13,8 @@ export default (): Return => {
         return (
             <div>
                 {
-                    values.map((value: number): JSX.Element => {
-                        return <CountTime number={value}></CountTime>
+                    values.map((value: number, index: number): JSX.Element => {
+                        return <CountTime number={value} key={index}></CountTime>
                     })
                 }
             </div>

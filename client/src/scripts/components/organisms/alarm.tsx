@@ -6,32 +6,50 @@ import Button from '@/scripts/components/atoms/button'
 import SelectTimeForm from '@/scripts/components/molecules/alarm/selectTimeForm'
 // hooks
 import useTimeElement from '@/scripts/hooks/useTimeElement'
-import useCurrentTimeState from '@/scripts/hooks/useCurrentTimeState'
 // contexts
 import Context from '@/scripts/contexts/context'
+
+type Handler = {
+    setSelectTime: () => void,
+}
 
 export default (): JSX.Element  => {3
 
     const context = React.useContext(Context.Context)
 
-    const timeElement = useTimeElement()
-    const currentTimeState = useCurrentTimeState()
-
+    const refSelectTimeForm = React.useRef<Handler>(null)
     const [isRun, setIsRun] = React.useState(false)
+
+    const timeElement = useTimeElement()
+
+    const activateAlarm = (): void => {
+        if (refSelectTimeForm.current === null) {
+            throw new Error()
+        }
+        refSelectTimeForm.current.setSelectTime()
+        setIsRun(! isRun)
+    }
+
+    const deactivateAlarm = () => {
+        setIsRun(! isRun)
+    }
 
     return (
         <div>
             {! isRun
-                ?   <SelectTimeForm></SelectTimeForm>
+                ?   <SelectTimeForm ref={refSelectTimeForm}></SelectTimeForm>
                 :   timeElement.createElement([
-                        currentTimeState.time.hours,
-                        currentTimeState.time.minutes,
-                        currentTimeState.time.seconds,
+                        context.selectTime.hours,
+                        context.selectTime.minutes,
+                        context.selectTime.seconds,
                     ])
             }
             <Button
                 isRun={isRun}
-                setIsRun={setIsRun}
+                onSubmit={isRun 
+                    ?   () => {deactivateAlarm()}
+                    :   () => {activateAlarm()}
+                }
             ></Button>
         </div>
     )

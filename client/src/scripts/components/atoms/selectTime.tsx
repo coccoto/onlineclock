@@ -6,26 +6,23 @@ type Props = {
     selectedNum: number,
 }
 
-export default (props: Props): JSX.Element => {
+export default React.forwardRef((props: Props, ref: React.ForwardedRef<HTMLSelectElement>): JSX.Element => {
 
     const optionElements = (productionNum: number): React.ReactNode => {
         let options: JSX.Element[] = []
 
         for (let i: number = 0; i < productionNum; i ++) {
-            if (props.selectedNum !== i) {
-                options.push(<option value={i} key={i}>{String(i).padStart(2, '0')}</option>)
-            } else {
-                options.push(<option selected value={i} key={i}>{String(i).padStart(2, '0')}</option>)
-            }
+            options.push(<option value={i} key={i}>{String(i).padStart(2, '0')}</option>)
         }
         return options
     }
 
     return (
         <div>
-            <select>
-                {optionElements(props.productionNum)}
-            </select>
+            <select
+                defaultValue={props.selectedNum}
+                ref={ref}>
+            {optionElements(props.productionNum)}</select>
         </div>
     )
-}
+})
