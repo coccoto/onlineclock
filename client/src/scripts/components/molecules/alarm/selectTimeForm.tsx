@@ -4,6 +4,8 @@ import React from 'react'
 import SelectTime from '@/scripts/components/atoms/selectTime'
 // contexts
 import Context from '@/scripts/contexts/context'
+// utils
+import selectDate from '@/scripts/utils/selectDate'
 
 type Props = {
 }
@@ -26,7 +28,11 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         if (refSelectTime.hours.current === null || refSelectTime.minutes.current === null || refSelectTime.seconds.current === null) {
             throw new Error()
         }
+        const dateInfo: SelectTime = selectDate().alarm(context.selectTime)
         context.setSelectTime({
+            year: dateInfo.year,
+            month: dateInfo.month,
+            date: dateInfo.date,
             hours: Number(refSelectTime.hours.current.value),
             minutes: Number(refSelectTime.minutes.current.value),
             seconds: Number(refSelectTime.seconds.current.value),

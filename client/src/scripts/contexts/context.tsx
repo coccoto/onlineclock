@@ -2,16 +2,8 @@
 import React from 'react'
 
 type ContextType = {
-    selectTime: {
-        hours: number,
-        minutes: number,
-        seconds: number,
-    },
-    setSelectTime: React.Dispatch<React.SetStateAction<{
-        hours: number;
-        minutes: number;
-        seconds: number;
-    }>>
+    selectTime: SelectTime,
+    setSelectTime: React.Dispatch<React.SetStateAction<SelectTime>>
 }
 
 type Props = {
@@ -20,6 +12,9 @@ type Props = {
 
 const Context = React.createContext<ContextType>({
     selectTime: {
+        year: 0,
+        month: 0,
+        date: 0,
         hours: 0,
         minutes: 0,
         seconds: 0,
