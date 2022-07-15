@@ -1,4 +1,7 @@
-type SelectTime = {
+type StateDateTime = {
+    year: number,
+    month: number,
+    date: number,
     hours: number,
     minutes: number,
     seconds: number,
@@ -10,10 +13,7 @@ type StateDate = {
     date: number,
 }
 
-type StateDateTime = {
-    year: number,
-    month: number,
-    date: number,
+type StateTime = {
     hours: number,
     minutes: number,
     seconds: number,

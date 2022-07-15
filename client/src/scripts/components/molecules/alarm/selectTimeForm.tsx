@@ -5,7 +5,7 @@ import SelectTime from '@/scripts/components/atoms/selectTime'
 // contexts
 import Context from '@/scripts/contexts/context'
 // utils
-import taregtDate from '@/scripts/utils/taregtDate'
+import dateChanger from '@/scripts/utils/dateChanger'
 
 type Props = {
 }
@@ -28,12 +28,12 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         if (refSelectTime.hours.current === null || refSelectTime.minutes.current === null || refSelectTime.seconds.current === null) {
             throw new Error()
         }
-        const selectTime: SelectTime = {
+        const selectTime: StateTime = {
             hours: Number(refSelectTime.hours.current.value),
             minutes: Number(refSelectTime.minutes.current.value),
             seconds: Number(refSelectTime.seconds.current.value),
         }
-        const dateInfo: StateDate = taregtDate().alarm(selectTime)
+        const dateInfo: StateDate = dateChanger.alarm(selectTime)
 
         context.setStateDateTime({
             year: dateInfo.year,

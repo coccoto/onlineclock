@@ -1,10 +1,10 @@
 // test
-import taregtDate from '@/scripts/utils/taregtDate'
+import dateChanger from '@/scripts/utils/dateChanger'
 
-const currentDate = new Date()
+const currentDate: Date = new Date()
 
-test('taregtDate', () => {
-    const result = taregtDate().alarm({
+test('dateChanger', () => {
+    const result = dateChanger.alarm({
         hours: 0,
         minutes: 0,
         seconds: 0,

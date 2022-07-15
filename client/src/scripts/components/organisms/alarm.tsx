@@ -4,7 +4,7 @@ import React from 'react'
 import Button from '@/scripts/components/atoms/button'
 // molecules
 import SelectTimeForm from '@/scripts/components/molecules/alarm/selectTimeForm'
-import AppAlarm from '@/scripts/components/molecules/alarm/appAlarm'
+import AlarmCounter from '@/scripts/components/molecules/alarm/alarmCounter'
 
 type Handler = {
     setSelectTime: () => void,
@@ -31,7 +31,7 @@ export default (): JSX.Element  => {3
         <div>
             {! isRun
                 ?   <SelectTimeForm ref={refSelectTimeForm}></SelectTimeForm>
-                :   <AppAlarm></AppAlarm>
+                :   <AlarmCounter></AlarmCounter>
             }
             <Button
                 isRun={isRun}

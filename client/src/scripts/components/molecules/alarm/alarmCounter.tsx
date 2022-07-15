@@ -5,7 +5,7 @@ import useTimeElement from '@/scripts/hooks/useTimeElement'
 // contexts
 import Context from '@/scripts/contexts/context'
 // utils
-import calculationAlarm from '@/scripts/utils/calculationAlarm'
+import alarmCalculate from '@/scripts/utils/alarmCalculate'
 
 type Props = {
 }
@@ -24,12 +24,10 @@ export default (props: Props): JSX.Element  => {
     }, [forceUpdate])
 
     const countUpdate = (): JSX.Element => {
-        console.log(context.stateDateTime)
-
-        calculationAlarm(context.stateDateTime)
+        const dispTime: StateTime = alarmCalculate.getRemaining(context.stateDateTime)
 
         return (
-            <div></div>
+            timeElement.createElement([dispTime.hours, dispTime.minutes, dispTime.seconds])
         )
     }
 
