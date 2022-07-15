@@ -10,7 +10,7 @@ type Handler = {
     setSelectTime: () => void,
 }
 
-export default (): JSX.Element  => {3
+export default (): JSX.Element  => {
 
     const refSelectTimeForm = React.useRef<Handler>(null)
     const [isRun, setIsRun] = React.useState(false)
