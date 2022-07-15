@@ -4,8 +4,7 @@ import React from 'react'
 import Button from '@/scripts/components/atoms/button'
 // molecules
 import SelectTimeForm from '@/scripts/components/molecules/selectTimeForm'
-import AlarmCounter from '@/scripts/components/molecules/alarm/alarmCounter'
-import TimerCounter from '@/scripts/components/molecules/timer/timerCounter'
+import AlarmTimerCounter from '@/scripts/components/molecules/alarmTimerCounter'
 // hooks
 import useAppManager from '@/scripts/hooks/useAppManager'
 
@@ -34,9 +33,7 @@ export default (props: Props): JSX.Element  => {
         <div>
             {! appManager.isRun
                 ? <SelectTimeForm ref={refSelectTimeForm} isTimer={props.isTimer}></SelectTimeForm>
-                : props.isTimer
-                    ? <TimerCounter></TimerCounter>
-                    : <AlarmCounter></AlarmCounter>
+                : <AlarmTimerCounter></AlarmTimerCounter>
             }
             <Button
                 isRun={appManager.isRun}

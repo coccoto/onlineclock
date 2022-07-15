@@ -1,4 +1,4 @@
-// library
+// helper
 import {
     addDays,
     addHours,
@@ -33,7 +33,6 @@ const alarmMethod = (selectedTime: StateTime): StateDateTime => {
         }
     }
     const isNextDate = (selectedTime: StateTime): boolean => {
-
         if (currentDate.getHours() >= selectedTime.hours) {
             if (currentDate.getHours() > selectedTime.hours) {
                 return true
@@ -49,7 +48,6 @@ const alarmMethod = (selectedTime: StateTime): StateDateTime => {
         }
         return false
     }
-
     return getDateInfo()
 }
 
