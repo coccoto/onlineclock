@@ -8,11 +8,16 @@ import Context from '@/scripts/contexts/context'
 import dateChanger from '@/scripts/utils/dateChanger'
 
 type Props = {
+    isTimer: boolean
 }
 
 export default React.forwardRef((props: Props, ref): JSX.Element => {
 
     const context = React.useContext(Context.Context)
+
+    React.useImperativeHandle(ref, () => ({
+        handleSubmit: () => {handleSubmit()}
+    }));
 
     const refSelectTime = {
         hours: React.useRef<HTMLSelectElement>(null),
@@ -20,28 +25,42 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         seconds: React.useRef<HTMLSelectElement>(null),
     }
 
-    React.useImperativeHandle(ref, () => ({
-        setSelectTime: () => {setSelectTime()}
-    }));
-
-    const setSelectTime = (): void => {
+    const handleSubmit = (): void => {
         if (refSelectTime.hours.current === null || refSelectTime.minutes.current === null || refSelectTime.seconds.current === null) {
             throw new Error()
         }
-        const selectTime: StateTime = {
+        const selectedTime: StateTime = {
             hours: Number(refSelectTime.hours.current.value),
             minutes: Number(refSelectTime.minutes.current.value),
             seconds: Number(refSelectTime.seconds.current.value),
         }
-        const dateInfo: StateDate = dateChanger.alarm(selectTime)
+        let dateInfo: StateDateTime = {
+            year: 0,
+            month: 0,
+            date: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+        }
 
-        context.setStateDateTime({
+        if (props.isTimer) {
+            dateInfo = dateChanger.timerMethod(selectedTime)
+        } else {
+            dateInfo = dateChanger.alarmMethod(selectedTime)
+        }
+        context.setTargetDate({
             year: dateInfo.year,
             month: dateInfo.month,
             date: dateInfo.date,
-            hours: selectTime.hours,
-            minutes: selectTime.minutes,
-            seconds: selectTime.seconds,
+            hours: dateInfo.hours,
+            minutes: dateInfo.minutes,
+            seconds: dateInfo.seconds,
+        })
+
+        context.setSelectedTime({
+            hours: selectedTime.hours,
+            minutes: selectedTime.minutes,
+            seconds: selectedTime.seconds,
         })
     }
 
@@ -49,17 +68,17 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         <div>
             <SelectTime
                 productionNum={24}
-                selectedNum={context.stateDateTime.hours}
+                selectedNum={context.selectedTime.hours}
                 ref={refSelectTime.hours}
             ></SelectTime>
             <SelectTime
                 productionNum={60}
-                selectedNum={context.stateDateTime.minutes}
+                selectedNum={context.selectedTime.minutes}
                 ref={refSelectTime.minutes}
             ></SelectTime>
             <SelectTime
                 productionNum={60}
-                selectedNum={context.stateDateTime.seconds}
+                selectedNum={context.selectedTime.seconds}
                 ref={refSelectTime.seconds}
             ></SelectTime>
         </div>

@@ -1,44 +1,77 @@
 // library
-import { addDays } from 'date-fns'
+import {
+    addDays,
+    addHours,
+    addMinutes,
+    addSeconds,
+} from 'date-fns'
 
-const currentDate: Date = new Date()
+const alarmMethod = (selectedTime: StateTime): StateDateTime => {
 
-const alarm = (selectTime: StateTime): StateDate => {
+    const currentDate: Date = new Date()
 
-    if (isNext(selectTime)) {
-        const nextDate: Date = addDays(currentDate, 1)
-        return {
-            year: nextDate.getFullYear(),
-            month: nextDate.getMonth(),
-            date: nextDate.getDate(),
-        }
-    } else {
-        return {
-            year: currentDate.getFullYear(),
-            month: currentDate.getMonth(),
-            date: currentDate.getDate(),
+    const getDateInfo = () => {
+        if (isNextDate(selectedTime)) {
+            const nextDate: Date = addDays(currentDate, 1)
+            return {
+                year: nextDate.getFullYear(),
+                month: nextDate.getMonth(),
+                date: nextDate.getDate(),
+                hours: selectedTime.hours,
+                minutes: selectedTime.minutes,
+                seconds: selectedTime.seconds,
+            }
+        } else {
+            return {
+                year: currentDate.getFullYear(),
+                month: currentDate.getMonth(),
+                date: currentDate.getDate(),
+                hours: selectedTime.hours,
+                minutes: selectedTime.minutes,
+                seconds: selectedTime.seconds,
+            }
         }
     }
+    const isNextDate = (selectedTime: StateTime): boolean => {
+
+        if (currentDate.getHours() >= selectedTime.hours) {
+            if (currentDate.getHours() > selectedTime.hours) {
+                return true
+            }
+            if (currentDate.getMinutes() >= selectedTime.minutes) {
+                if (currentDate.getMinutes() > selectedTime.minutes) {
+                    return true
+                }
+                if (currentDate.getSeconds() > selectedTime.seconds) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    return getDateInfo()
 }
 
-const isNext = (selectTime: StateTime): boolean => {
+const timerMethod = (selectedTime: StateTime): StateDateTime => {
 
-    if (currentDate.getHours() >= selectTime.hours) {
-        if (currentDate.getHours() > selectTime.hours) {
-            return true
-        }
-        if (currentDate.getMinutes() >= selectTime.minutes) {
-            if (currentDate.getMinutes() > selectTime.minutes) {
-                return true
-            }
-            if (currentDate.getSeconds() > selectTime.seconds) {
-                return true
-            }
-        }
+    const currentDate: Date = new Date()
+
+    let targetDate: Date = addHours(currentDate, selectedTime.hours)
+    targetDate = addMinutes(targetDate, selectedTime.minutes)
+    targetDate = addSeconds(targetDate, selectedTime.seconds + 1)
+
+    return {
+        year: targetDate.getFullYear(),
+        month: targetDate.getMonth(),
+        date: targetDate.getDate(),
+        hours: targetDate.getHours(),
+        minutes: targetDate.getMinutes(),
+        seconds: targetDate.getSeconds(),
     }
-    return false
 }
 
 export default {
-    alarm: alarm
+    alarmMethod: alarmMethod,
+    timerMethod: timerMethod,
 }
