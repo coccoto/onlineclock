@@ -24,7 +24,9 @@ export default (props: Props): JSX.Element  => {
     }, [forceUpdate])
 
     const countUpdate = (): JSX.Element => {
-        console.log(context.selectTime)
+        console.log(context.stateDateTime)
+
+        calculationAlarm(context.stateDateTime)
 
         return (
             <div></div>

@@ -5,7 +5,7 @@ import SelectTime from '@/scripts/components/atoms/selectTime'
 // contexts
 import Context from '@/scripts/contexts/context'
 // utils
-import selectDate from '@/scripts/utils/selectDate'
+import taregtDate from '@/scripts/utils/taregtDate'
 
 type Props = {
 }
@@ -28,14 +28,20 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         if (refSelectTime.hours.current === null || refSelectTime.minutes.current === null || refSelectTime.seconds.current === null) {
             throw new Error()
         }
-        const dateInfo: SelectTime = selectDate().alarm(context.selectTime)
-        context.setSelectTime({
-            year: dateInfo.year,
-            month: dateInfo.month,
-            date: dateInfo.date,
+        const selectTime: SelectTime = {
             hours: Number(refSelectTime.hours.current.value),
             minutes: Number(refSelectTime.minutes.current.value),
             seconds: Number(refSelectTime.seconds.current.value),
+        }
+        const dateInfo: StateDate = taregtDate().alarm(selectTime)
+
+        context.setStateDateTime({
+            year: dateInfo.year,
+            month: dateInfo.month,
+            date: dateInfo.date,
+            hours: selectTime.hours,
+            minutes: selectTime.minutes,
+            seconds: selectTime.seconds,
         })
     }
 
@@ -43,17 +49,17 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
         <div>
             <SelectTime
                 productionNum={24}
-                selectedNum={context.selectTime.hours}
+                selectedNum={context.stateDateTime.hours}
                 ref={refSelectTime.hours}
             ></SelectTime>
             <SelectTime
                 productionNum={60}
-                selectedNum={context.selectTime.minutes}
+                selectedNum={context.stateDateTime.minutes}
                 ref={refSelectTime.minutes}
             ></SelectTime>
             <SelectTime
                 productionNum={60}
-                selectedNum={context.selectTime.seconds}
+                selectedNum={context.stateDateTime.seconds}
                 ref={refSelectTime.seconds}
             ></SelectTime>
         </div>

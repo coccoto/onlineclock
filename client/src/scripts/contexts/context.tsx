@@ -2,8 +2,8 @@
 import React from 'react'
 
 type ContextType = {
-    selectTime: SelectTime,
-    setSelectTime: React.Dispatch<React.SetStateAction<SelectTime>>
+    stateDateTime: StateDateTime,
+    setStateDateTime: React.Dispatch<React.SetStateAction<StateDateTime>>
 }
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Context = React.createContext<ContextType>({
-    selectTime: {
+    stateDateTime: {
         year: 0,
         month: 0,
         date: 0,
@@ -19,13 +19,13 @@ const Context = React.createContext<ContextType>({
         minutes: 0,
         seconds: 0,
     },
-    setSelectTime: () => {},
+    setStateDateTime: () => {},
 })
 
 const ContextProvider = (props: Props): JSX.Element => {
     const context: ContextType = React.useContext(Context)
-    const [selectTime, setSelectTime] = React.useState(context.selectTime)
-    const shareContext = {selectTime, setSelectTime}
+    const [stateDateTime, setStateDateTime] = React.useState(context.stateDateTime)
+    const shareContext = {stateDateTime, setStateDateTime}
 
     return (
         <Context.Provider value={shareContext}>

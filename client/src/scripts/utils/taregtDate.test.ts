@@ -1,15 +1,12 @@
 // test
-import selectDate from '@/scripts/utils/selectDate'
+import taregtDate from '@/scripts/utils/taregtDate'
 
 const currentDate = new Date()
 
-test('001', () => {
-    const result = selectDate().alarm({
-        year: 0,
-        month: 0,
-        date: 0,
+test('taregtDate', () => {
+    const result = taregtDate().alarm({
         hours: 0,
-        minutes:0,
+        minutes: 0,
         seconds: 0,
     })
     console.log(result)
@@ -18,8 +15,5 @@ test('001', () => {
         year: currentDate.getFullYear(),
         month: currentDate.getMonth(),
         date: currentDate.getDate(),
-        hours: 0,
-        minutes:0,
-        seconds: 0,
     })
 })

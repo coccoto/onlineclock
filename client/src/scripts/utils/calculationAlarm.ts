@@ -1,3 +1,3 @@
-export default (selectTime: SelectTime) => {
+export default (selectTime: StateDateTime) => {
 
 }
