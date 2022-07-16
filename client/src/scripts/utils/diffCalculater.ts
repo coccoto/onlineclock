@@ -8,7 +8,6 @@ import {
 } from 'date-fns'
 
 const getRemaining = (stateDateTime: StateDateTime): StateTime => {
-
     const currentDate: Date = new Date()
 
     let targetDate: Date = new Date(

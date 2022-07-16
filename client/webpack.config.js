@@ -105,5 +105,12 @@ const RULES = [
     },{
         test: /\.(html)$/,
         loader: 'html-loader'
+    },{
+        test: /\.(mp3)$/,
+        loader: 'file-loader',
+        options: {
+            name: '[name].[ext]',
+            outputPath: 'resources/sounds'
+        }
     }
 ]

@@ -6,11 +6,11 @@ export default () => {
     const [isRun, setIsRun] = React.useState(false)
 
     const activateApp = (): void => {
-        setIsRun(! isRun)
+        setIsRun(true)
     }
 
     const deactivateApp = (): void => {
-        setIsRun(! isRun)
+        setIsRun(false)
     }
 
     return {
