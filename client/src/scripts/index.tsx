@@ -10,7 +10,7 @@ import styles from '@/styles/index.module.sass'
 export default () => {
 
     return (
-        <div>
+        <div className={styles['container']}>
             <Header></Header>
             <Main></Main>
             <Footer></Footer>

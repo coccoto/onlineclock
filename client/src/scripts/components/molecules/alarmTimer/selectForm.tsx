@@ -6,6 +6,8 @@ import SelectTime from '@/scripts/components/atoms/selectTime'
 import Context from '@/scripts/contexts/context'
 // utils
 import dateChanger from '@/scripts/utils/dateChanger'
+// styles
+import styles from '@/styles/components/molecules/alarmTimer/selectForm.module.sass'
 
 type Props = {
     isTimer: boolean
@@ -65,17 +67,19 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
     }
 
     return (
-        <div>
+        <div className={styles['container']}>
             <SelectTime
                 productionNum={24}
                 selectedNum={context.selectedTime.hours}
                 ref={refSelectTime.hours}
             ></SelectTime>
+            <div>：</div>
             <SelectTime
                 productionNum={60}
                 selectedNum={context.selectedTime.minutes}
                 ref={refSelectTime.minutes}
             ></SelectTime>
+            <div>：</div>
             <SelectTime
                 productionNum={60}
                 selectedNum={context.selectedTime.seconds}

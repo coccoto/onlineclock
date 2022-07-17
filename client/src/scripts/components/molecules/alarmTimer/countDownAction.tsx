@@ -1,13 +1,15 @@
 // react
 import React from 'react'
-// hooks
-import useTimeElement from '@/scripts/hooks/useTimeElement'
+// molecules
+import OutputTime from '@/scripts/components/molecules/outputTime'
 // contexts
 import Context from '@/scripts/contexts/context'
 // hooks
 import useLoopWorker from '@/scripts/hooks/useLoopWorker'
 // utils
 import diffCalculater from '@/scripts/utils/diffCalculater'
+// styles
+import styles from '@/styles/components/molecules/alarmTimer/countDownAction.module.sass'
 
 type Props = {
     audio: {
@@ -24,8 +26,6 @@ export default (props: Props): JSX.Element  => {
 
     const [forceUpdate, setForceUpdate] = React.useState<boolean>(false)
 
-    const timeElement = useTimeElement()
-
     React.useEffect(() => {
         loopWorker.setTimeoutWorker(() => {
             setForceUpdate(! forceUpdate)
@@ -40,7 +40,13 @@ export default (props: Props): JSX.Element  => {
             props.audio.play()
         }
         return (
-            timeElement.createElement([dispTime.hours, dispTime.minutes, dispTime.seconds])
+            <OutputTime
+                stateTime={{
+                    hours: dispTime.hours,
+                    minutes: dispTime.minutes,
+                    seconds: dispTime.seconds,
+                }}
+            ></OutputTime>
         )
     }
 
@@ -63,6 +69,8 @@ export default (props: Props): JSX.Element  => {
     }
 
     return (
-        countUpdate()
+        <div>
+            {countUpdate()}
+        </div>
     )
 }

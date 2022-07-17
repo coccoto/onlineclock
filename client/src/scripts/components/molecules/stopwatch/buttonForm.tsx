@@ -2,6 +2,8 @@
 import React from 'react'
 // atoms
 import Button from '@/scripts/components/atoms/button'
+// styles
+import styles from '@/styles/components/molecules/stopwatch/buttonForm.module.sass'
 
 type Props = {
     isRun: boolean
@@ -13,7 +15,7 @@ type Props = {
 export default (props: Props): JSX.Element  => {
 
     return (
-        <div>
+        <div className={styles['container']}>
             <Button
                 isRun={props.isRun}
                 activateLabel={'STOP'}

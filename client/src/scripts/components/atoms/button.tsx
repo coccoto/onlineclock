@@ -1,5 +1,7 @@
 // react
 import React from 'react'
+// styles
+import styles from '@/styles/components/atoms/button.module.sass'
 
 type Props = {
     isRun: boolean,
@@ -15,10 +17,13 @@ export default (props: Props): JSX.Element  => {
     }
 
     return (
-        <div
-            onClick={() => {
-                props.onSubmit()
-            }}
-        >{getLabel()}</div>
+        <div>
+            <div
+                className={styles['button']}
+                onClick={() => {
+                    props.onSubmit()
+                }}
+            >{getLabel()}</div>
+        </div>
     )
 }

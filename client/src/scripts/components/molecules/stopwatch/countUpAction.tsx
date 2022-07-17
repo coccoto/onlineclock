@@ -1,12 +1,15 @@
 // react
 import React from 'react'
+// molecules
+import OutputTime from '@/scripts/components/molecules/outputTime'
 // hooks
-import useTimeElement from '@/scripts/hooks/useTimeElement'
 import useLoopWorker from '@/scripts/hooks/useLoopWorker'
 // helper
 import {
     addSeconds
 } from 'date-fns'
+// styles
+import styles from '@/styles/components/molecules/stopwatch/countUpAction.module.sass'
 
 type Props = {
     isRun: boolean
@@ -19,7 +22,6 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
     }));
 
     const loopWorker = useLoopWorker()
-    const timeElement = useTimeElement()
 
     const defaultCount: Date = new Date(1970, 1, 1, 0, 0, 0)
     const [currentCouter, setCurrentCouter] = React.useState<Date>(defaultCount)
@@ -45,7 +47,13 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
 
     return (
         <div>
-            {timeElement.createElement([currentCouter.getHours(), currentCouter.getMinutes(), currentCouter.getSeconds()])}
+            <OutputTime
+                stateTime={{
+                    hours: currentCouter.getHours(),
+                    minutes: currentCouter.getMinutes(),
+                    seconds: currentCouter.getSeconds(),
+                }}
+            ></OutputTime>
         </div>
     )
 })

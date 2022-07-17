@@ -1,8 +1,8 @@
 // react
 import React from 'react'
 // molecules
-import StopwatchCounter from '@/scripts/components/molecules/stopwatch/stopwatchCounter'
-import CountController from '@/scripts/components/molecules/stopwatch/countController'
+import CountUpAction from '@/scripts/components/molecules/stopwatch/countUpAction'
+import ButtonForm from '@/scripts/components/molecules/stopwatch/buttonForm'
 // hooks
 import useAppManager from '@/scripts/hooks/useAppManager'
 
@@ -28,16 +28,16 @@ export default (props: Props): JSX.Element  => {
 
     return (
         <div>
-            <StopwatchCounter
+            <CountUpAction
                 ref={refStopwatchController}
                 isRun={appManager.isRun}
-            ></StopwatchCounter>
-            <CountController
+            ></CountUpAction>
+            <ButtonForm
                 isRun={appManager.isRun}
                 activateApp={() => {appManager.activateApp()}}
                 deactivateApp={() => {appManager.deactivateApp()}}
                 countReset={() => {countReset()}}
-            ></CountController>
+            ></ButtonForm>
         </div>
     )
 }

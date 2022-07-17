@@ -1,5 +1,7 @@
 // react
 import React from 'react'
+// styles
+import styles from '@/styles/components/atoms/selectTime.module.sass'
 
 type Props = {
     productionNum: number,
