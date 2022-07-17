@@ -3,8 +3,8 @@ import React from 'react'
 // atoms
 import Button from '@/scripts/components/atoms/button'
 // molecules
-import SelectTimeForm from '@/scripts/components/molecules/selectTimeForm'
-import AlarmTimerCounter from '@/scripts/components/molecules/alarmTimerCounter'
+import SelectForm from '@/scripts/components/molecules/alarmTimer/selectForm'
+import AlarmTimerCounter from '@/scripts/components/molecules/alarmTimer/alarmTimerCounter'
 // hooks
 import useAppManager from '@/scripts/hooks/useAppManager'
 import useAudio from '@/scripts/hooks/useAudio'
@@ -21,43 +21,45 @@ type Handler = {
 
 export default (props: Props): JSX.Element  => {
 
-    const appManager = useAppManager()
+    const refSelectForm = React.useRef<Handler>(null)
 
-    const refSelectTimeForm = React.useRef<Handler>(null)
+    const appManager = useAppManager()
     const audio = useAudio(sound)
 
     const setSelectTime = () => {
-        if (refSelectTimeForm.current === null) {
+        if (refSelectForm.current === null) {
             throw new Error()
         }
-        refSelectTimeForm.current.handleSubmit()
+        refSelectForm.current.handleSubmit()
+    }
+
+    const activateApp = (): void => {
+        setSelectTime()
+        audio.unlock()
+        appManager.activateApp()
+    }
+
+    const deactivateApp = (): void => {
+        audio.pause()
+        appManager.deactivateApp()
     }
 
     return (
         <div>
             {! appManager.isRun
-                ? <SelectTimeForm
-                    ref={refSelectTimeForm}
+                ? <SelectForm
+                    ref={refSelectForm}
                     isTimer={props.isTimer}
-                  ></SelectTimeForm>
-                : <AlarmTimerCounter
-                    audio={audio}
-                  ></AlarmTimerCounter>
+                  ></SelectForm>
+                : <AlarmTimerCounter audio={audio}></AlarmTimerCounter>
             }
             <Button
                 isRun={appManager.isRun}
                 activateLabel={'OFF'}
                 deactivateLabel={'SET'}
                 onSubmit={appManager.isRun 
-                    ?   () => {
-                            audio.pause()
-                            appManager.deactivateApp()
-                        }
-                    :   () => {
-                            audio.unlock()
-                            setSelectTime()
-                            appManager.activateApp()
-                        }
+                    ? () => {deactivateApp()}
+                    : () => {activateApp()}
                 }
             ></Button>
         </div>

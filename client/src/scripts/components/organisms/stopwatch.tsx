@@ -1,8 +1,8 @@
 // react
 import React from 'react'
 // molecules
-import StopwatchCounter from '@/scripts/components/molecules/stopwatchCounter'
-import CountController from '@/scripts/components/molecules/countController'
+import StopwatchCounter from '@/scripts/components/molecules/stopwatch/stopwatchCounter'
+import CountController from '@/scripts/components/molecules/stopwatch/countController'
 // hooks
 import useAppManager from '@/scripts/hooks/useAppManager'
 
@@ -15,9 +15,9 @@ type Handler = {
 
 export default (props: Props): JSX.Element  => {
 
-    const appManager = useAppManager()
-
     const refStopwatchController = React.useRef<Handler>(null)
+
+    const appManager = useAppManager()
 
     const countReset = (): void => {
         if (refStopwatchController.current === null) {
@@ -34,9 +34,9 @@ export default (props: Props): JSX.Element  => {
             ></StopwatchCounter>
             <CountController
                 isRun={appManager.isRun}
-                activateApp={appManager.activateApp}
-                deactivateApp={appManager.deactivateApp}
-                countReset={countReset}
+                activateApp={() => {appManager.activateApp()}}
+                deactivateApp={() => {appManager.deactivateApp()}}
+                countReset={() => {countReset()}}
             ></CountController>
         </div>
     )

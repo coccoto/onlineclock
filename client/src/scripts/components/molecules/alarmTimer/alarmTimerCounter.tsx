@@ -4,30 +4,39 @@ import React from 'react'
 import useTimeElement from '@/scripts/hooks/useTimeElement'
 // contexts
 import Context from '@/scripts/contexts/context'
+// hooks
+import useLoopWorker from '@/scripts/hooks/useLoopWorker'
 // utils
 import diffCalculater from '@/scripts/utils/diffCalculater'
 
 type Props = {
-    audio: Audio
+    audio: {
+        play: () => void,
+        pause: () => void,
+        unlock: () => void,
+    }
 }
 
 export default (props: Props): JSX.Element  => {
 
     const context = React.useContext(Context.Context)
-    const timeElement = useTimeElement()
+    const loopWorker = useLoopWorker()
 
     const [forceUpdate, setForceUpdate] = React.useState<boolean>(false)
-    const [loop, setLoop] = React.useState<NodeJS.Timer>()
+
+    const timeElement = useTimeElement()
 
     React.useEffect(() => {
-        setLoop(setTimeout(() => {setForceUpdate(! forceUpdate)}, 1000))
+        loopWorker.setTimeoutWorker(() => {
+            setForceUpdate(! forceUpdate)
+        }, 1000)
     }, [forceUpdate])
 
     const countUpdate = (): JSX.Element => {
-        const dispTime: StateTime = diffCalculater.getRemaining(context.targetDate)
+        let dispTime: StateTime = diffCalculater.getRemaining(context.targetDate)
 
         if (isNotification(context.targetDate)) {
-            clearTimeout(loop)
+            loopWorker.clearTimeoutWorker()
             props.audio.play()
         }
         return (
@@ -44,7 +53,7 @@ export default (props: Props): JSX.Element  => {
             stateDateTime.date,
             stateDateTime.hours,
             stateDateTime.minutes,
-            stateDateTime.seconds
+            stateDateTime.seconds - 1,
         )
         if (currentDate.getTime() >= targetDate.getTime()) {
             return true

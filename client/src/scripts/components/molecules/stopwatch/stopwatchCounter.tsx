@@ -2,6 +2,7 @@
 import React from 'react'
 // hooks
 import useTimeElement from '@/scripts/hooks/useTimeElement'
+import useLoopWorker from '@/scripts/hooks/useLoopWorker'
 // helper
 import {
     addSeconds
@@ -17,16 +18,19 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
         countReset: () => {countReset()}
     }));
 
+    const loopWorker = useLoopWorker()
     const timeElement = useTimeElement()
 
-    const [currentCouter, setCurrentCouter] = React.useState<Date>(new Date(1970, 1, 1, 0, 0, 0))
-    const [loop, setLoop] = React.useState<NodeJS.Timer>()
+    const defaultCount: Date = new Date(1970, 1, 1, 0, 0, 0)
+    const [currentCouter, setCurrentCouter] = React.useState<Date>(defaultCount)
 
     React.useEffect(() => {
         if (props.isRun) {
-            setLoop(setTimeout(() => {countUpdate()}, 1000))
+            loopWorker.setTimeoutWorker(() => {
+                countUpdate()
+            }, 1000)
         } else {
-            clearTimeout(loop)
+            loopWorker.clearTimeoutWorker()
         }
     }, [currentCouter, props.isRun])
 
@@ -36,7 +40,7 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
     }
 
     const countReset = (): void => {
-        setCurrentCouter(new Date(1970, 1, 1, 0, 0, 0))
+        setCurrentCouter(defaultCount)
     }
 
     return (

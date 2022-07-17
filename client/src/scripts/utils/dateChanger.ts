@@ -32,6 +32,7 @@ const alarmMethod = (selectedTime: StateTime): StateDateTime => {
             }
         }
     }
+
     const isNextDate = (selectedTime: StateTime): boolean => {
         if (currentDate.getHours() >= selectedTime.hours) {
             if (currentDate.getHours() > selectedTime.hours) {

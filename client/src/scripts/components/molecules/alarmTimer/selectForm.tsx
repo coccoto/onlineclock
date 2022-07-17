@@ -13,11 +13,11 @@ type Props = {
 
 export default React.forwardRef((props: Props, ref): JSX.Element => {
 
-    const context = React.useContext(Context.Context)
-
     React.useImperativeHandle(ref, () => ({
         handleSubmit: () => {handleSubmit()}
     }));
+
+    const context = React.useContext(Context.Context)
 
     const refSelectTime = {
         hours: React.useRef<HTMLSelectElement>(null),
