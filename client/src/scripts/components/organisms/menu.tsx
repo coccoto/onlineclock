@@ -15,7 +15,7 @@ export default () => {
                     path={'/'}
                 ></MenuItem>
             </div>
-            <div className={styles['wrapper-item']}>
+            <div className={styles['wrapper-item-selected']}>
                 <MenuItem
                     label={'Timer'}
                     path={'/timer'}

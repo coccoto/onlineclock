@@ -2,12 +2,21 @@
     @media screen and (min-width: $width)
         @content
 
-@mixin flex()
+@mixin flex($column)
     display: flex
-    justify-content: center
+    justify-content: $column
     align-items: center
 
-@mixin grid()
+@mixin grid($column)
     display: grid
-    justify-content: center
+    justify-content: $column
     align-items: center
+
+@mixin fadein($animation-name)
+    animation: #{$animation-name} 1s
+
+    @keyframes #{$animation-name}
+        0%
+            opacity: 0
+        100%
+            opacity: 1

@@ -4,10 +4,15 @@
 
 .button
     display: inline-block
-    width: 12rem
-    padding: 0.5rem 0
+    width: 11rem
+    padding: 0.75rem 0
     text-align: center
-    font-size: 1.75rem
-    border: 1px solid colors.$value-color
+    font-size: 1.5rem
+    border: 1px solid colors.$border-color
     cursor: pointer
     background-color: colors.$sub-color
+    border-radius: 10rem
+
+    @include mixins.media()
+        width: 13rem
+        padding: 1rem 0

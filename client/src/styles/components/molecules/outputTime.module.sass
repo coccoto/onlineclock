@@ -3,5 +3,8 @@
 @use 'utils/mixins'
 
 .container
-    @include mixins.flex()
-    font-size: 5rem
+    @include mixins.flex(space-around)
+    font-size: 3rem
+
+    @include mixins.media()
+        font-size: 5rem

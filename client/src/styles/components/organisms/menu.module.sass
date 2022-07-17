@@ -2,19 +2,22 @@
 @use 'utils/colors'
 @use 'utils/mixins'
 
+$selected-background-color: lighten(colors.$base-color, 10%)
+
 .container
-    @include mixins.grid()
+    @include mixins.grid(center)
     grid-template-columns: 1fr 1fr 1fr
     position: fixed
     width: 100%
     background-color: colors.$sub-color
     bottom: 0
-    border-top: 1px solid colors.$value-color
+    border-top: 1px solid colors.$border-color
 
-.wrapper
+.wrapper-item
+    cursor: pointer
 
-    &-item
-        cursor: pointer
+    &:not(:last-child)
+        border-right: 1px solid colors.$border-color
 
-        &:not(:last-child)
-            border-right: 1px solid colors.$value-color
+    &-selected
+        background-color: $selected-background-color

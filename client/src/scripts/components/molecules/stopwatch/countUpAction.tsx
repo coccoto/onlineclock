@@ -3,8 +3,8 @@ import React from 'react'
 // molecules
 import OutputTime from '@/scripts/components/molecules/outputTime'
 // hooks
-import useLoopWorker from '@/scripts/hooks/useLoopWorker'
-// helper
+import useWorkerTimers from '@/scripts/hooks/useWorkerTimers'
+// helpers
 import {
     addSeconds
 } from 'date-fns'
@@ -21,7 +21,7 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
         countReset: () => {countReset()}
     }));
 
-    const loopWorker = useLoopWorker()
+    const workerTimers = useWorkerTimers()
 
     const defaultCount: Date = new Date(1970, 1, 1, 0, 0, 0)
     const [currentCouter, setCurrentCouter] = React.useState<Date>(defaultCount)
@@ -30,19 +30,19 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
         if (props.isRun) {
             countUpdate()
         } else {
-            loopWorker.clearTimeoutWorker()
+            workerTimers.clearTimeoutWorker()
         }
     }, [currentCouter, props.isRun])
 
     const countUpdate = (): void => {
-        loopWorker.setTimeoutWorker(() => {
+        workerTimers.setTimeoutWorker(() => {
             const nextCounter = addSeconds(currentCouter, 1)
             setCurrentCouter(nextCounter)
         }, 1000)
     }
 
     const countReset = (): void => {
-        loopWorker.clearTimeoutWorker()
+        workerTimers.clearTimeoutWorker()
         setCurrentCouter(defaultCount)
         countUpdate()
     }

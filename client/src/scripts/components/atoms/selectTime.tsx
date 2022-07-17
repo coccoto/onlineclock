@@ -22,6 +22,7 @@ export default React.forwardRef((props: Props, ref: React.ForwardedRef<HTMLSelec
     return (
         <div>
             <select
+                className={styles['select']}
                 defaultValue={props.selectedNum}
                 ref={ref}>
             {optionElements(props.productionNum)}</select>

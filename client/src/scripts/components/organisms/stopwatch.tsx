@@ -5,6 +5,8 @@ import CountUpAction from '@/scripts/components/molecules/stopwatch/countUpActio
 import ButtonForm from '@/scripts/components/molecules/stopwatch/buttonForm'
 // hooks
 import useAppManager from '@/scripts/hooks/useAppManager'
+// styles
+import styles from '@/styles/components/organisms/stopwatch.module.sass'
 
 type Props = {
 }
@@ -27,7 +29,7 @@ export default (props: Props): JSX.Element  => {
     }
 
     return (
-        <div>
+        <div className={styles['container']}>
             <CountUpAction
                 ref={refStopwatchController}
                 isRun={appManager.isRun}

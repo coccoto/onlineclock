@@ -5,7 +5,7 @@ import OutputTime from '@/scripts/components/molecules/outputTime'
 // contexts
 import Context from '@/scripts/contexts/context'
 // hooks
-import useLoopWorker from '@/scripts/hooks/useLoopWorker'
+import useWorkerTimers from '@/scripts/hooks/useWorkerTimers'
 // utils
 import diffCalculater from '@/scripts/utils/diffCalculater'
 // styles
@@ -22,12 +22,12 @@ type Props = {
 export default (props: Props): JSX.Element  => {
 
     const context = React.useContext(Context.Context)
-    const loopWorker = useLoopWorker()
+    const workerTimers = useWorkerTimers()
 
     const [forceUpdate, setForceUpdate] = React.useState<boolean>(false)
 
     React.useEffect(() => {
-        loopWorker.setTimeoutWorker(() => {
+        workerTimers.setTimeoutWorker(() => {
             setForceUpdate(! forceUpdate)
         }, 1000)
     }, [forceUpdate])
@@ -36,7 +36,7 @@ export default (props: Props): JSX.Element  => {
         let dispTime: StateTime = diffCalculater.getRemaining(context.targetDate)
 
         if (isNotification(context.targetDate)) {
-            loopWorker.clearTimeoutWorker()
+            workerTimers.clearTimeoutWorker()
             props.audio.play()
         }
         return (

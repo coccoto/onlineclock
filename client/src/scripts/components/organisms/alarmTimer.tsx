@@ -47,7 +47,7 @@ export default (props: Props): JSX.Element  => {
     }
 
     return (
-        <div>
+        <div className={appManager.isRun ? styles['container-true'] : styles['container-false']}>
             {! appManager.isRun
                 ? <SelectForm
                     ref={refSelectForm}

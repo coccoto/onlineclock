@@ -3,9 +3,12 @@ import React from 'react'
 
 export default () => {
 
-    const [isRun, setIsRun] = React.useState(false)
+    const [isFirstBoot, setIsFirstBoot] = React.useState<boolean>(true)
+    const [isRun, setIsRun] = React.useState<boolean>(false)
+
 
     const activateApp = (): void => {
+        setIsFirstBoot(false)
         setIsRun(true)
     }
 
@@ -14,6 +17,7 @@ export default () => {
     }
 
     return {
+        isFirstBoot: isFirstBoot,
         isRun: isRun,
         activateApp: activateApp,
         deactivateApp: deactivateApp,

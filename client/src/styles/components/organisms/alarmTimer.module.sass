@@ -2,8 +2,20 @@
 @use 'utils/colors'
 @use 'utils/mixins'
 
-.wrapper
+.container
+    width: 90%
+    max-width: 50rem
 
-    &-button
-        @include mixins.flex()
-        margin-top: 4rem
+    &-false
+        @extend .container
+        @include mixins.fadein(fadein-false)
+
+    &-true
+        @extend .container
+        @include mixins.fadein(fadein-true)
+
+    
+
+.wrapper-button
+    @include mixins.flex(center)
+    margin-top: 4rem

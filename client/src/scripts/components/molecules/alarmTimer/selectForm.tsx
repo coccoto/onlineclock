@@ -2,6 +2,7 @@
 import React from 'react'
 // atoms
 import SelectTime from '@/scripts/components/atoms/selectTime'
+import SeparateTime from '@/scripts/components/atoms/separateTime'
 // contexts
 import Context from '@/scripts/contexts/context'
 // utils
@@ -73,13 +74,13 @@ export default React.forwardRef((props: Props, ref): JSX.Element => {
                 selectedNum={context.selectedTime.hours}
                 ref={refSelectTime.hours}
             ></SelectTime>
-            <div>：</div>
+            <SeparateTime></SeparateTime>
             <SelectTime
                 productionNum={60}
                 selectedNum={context.selectedTime.minutes}
                 ref={refSelectTime.minutes}
             ></SelectTime>
-            <div>：</div>
+            <SeparateTime></SeparateTime>
             <SelectTime
                 productionNum={60}
                 selectedNum={context.selectedTime.seconds}

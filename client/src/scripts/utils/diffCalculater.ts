@@ -1,4 +1,4 @@
-// helper
+// helpers
 import {
     subHours,
     subMinutes,

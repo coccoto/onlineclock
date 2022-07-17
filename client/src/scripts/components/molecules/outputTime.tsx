@@ -2,6 +2,7 @@
 import React from 'react'
 // atoms
 import CountTime from '@/scripts/components/atoms/countTime'
+import SeparateTime from '@/scripts/components/atoms/separateTime'
 // styles
 import styles from '@/styles/components/molecules/outputTime.module.sass'
 
@@ -14,9 +15,9 @@ export default (props: Props): JSX.Element => {
     return (
         <div className={styles['container']}>
             <CountTime number={props.stateTime.hours}></CountTime>
-            <div>：</div>
+            <SeparateTime></SeparateTime>
             <CountTime number={props.stateTime.minutes}></CountTime>
-            <div>：</div>
+            <SeparateTime></SeparateTime>
             <CountTime number={props.stateTime.seconds}></CountTime>
         </div>
     )
