@@ -30,21 +30,20 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
         if (props.isRun) {
             countUpdate()
         } else {
-            workerTimers.clearTimeoutWorker()
+            workerTimers.clearWorkerTimeout()
         }
     }, [currentCouter, props.isRun])
 
     const countUpdate = (): void => {
-        workerTimers.setTimeoutWorker(() => {
+        workerTimers.setWorkerTimeout(() => {
             const nextCounter = addSeconds(currentCouter, 1)
             setCurrentCouter(nextCounter)
         }, 1000)
     }
 
     const countReset = (): void => {
-        workerTimers.clearTimeoutWorker()
+        workerTimers.clearWorkerTimeout()
         setCurrentCouter(defaultCount)
-        countUpdate()
     }
 
     return (

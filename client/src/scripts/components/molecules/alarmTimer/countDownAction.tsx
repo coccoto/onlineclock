@@ -27,7 +27,7 @@ export default (props: Props): JSX.Element  => {
     const [forceUpdate, setForceUpdate] = React.useState<boolean>(false)
 
     React.useEffect(() => {
-        workerTimers.setTimeoutWorker(() => {
+        workerTimers.setWorkerTimeout(() => {
             setForceUpdate(! forceUpdate)
         }, 1000)
     }, [forceUpdate])
@@ -36,7 +36,7 @@ export default (props: Props): JSX.Element  => {
         let dispTime: StateTime = diffCalculater.getRemaining(context.targetDate)
 
         if (isNotification(context.targetDate)) {
-            workerTimers.clearTimeoutWorker()
+            workerTimers.clearWorkerTimeout()
             props.audio.play()
         }
         return (

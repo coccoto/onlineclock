@@ -6,7 +6,7 @@ $selected-background-color: lighten(colors.$base-color, 10%)
 
 .container
     @include mixins.grid(center)
-    grid-template-columns: 1fr 1fr 1fr
+    grid-template-columns: repeat(3, 1fr)
     position: fixed
     width: 100%
     background-color: colors.$sub-color

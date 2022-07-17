@@ -14,6 +14,11 @@ type Props = {
 
 export default (props: Props): JSX.Element  => {
 
+    const resetSubmit = (): void => {
+        props.countReset()
+        props.deactivateApp()
+    }
+
     return (
         <div className={styles['container']}>
             <div className={styles['button']}>
@@ -30,12 +35,9 @@ export default (props: Props): JSX.Element  => {
             <div className={styles['button']}>
                 <Button
                     isRun={false}
-                    activateLabel={'RESET'}
+                    activateLabel={''}
                     deactivateLabel={'RESET'}
-                    onSubmit={props.isRun 
-                        ?   () => {props.countReset()}
-                        :   () => {props.countReset()}
-                    }
+                    onSubmit={() => {resetSubmit()}}
                 ></Button>
             </div>
         </div>

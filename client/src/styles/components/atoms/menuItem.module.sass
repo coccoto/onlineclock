@@ -3,8 +3,8 @@
 @use 'utils/mixins'
 
 .item
-    padding: 1rem 0
-    text-align: center
+    @include mixins.flex(center)
+    height: 4rem
     font-size: 1.25rem
 
     @include mixins.media()

@@ -1,29 +1,31 @@
 // react
 import React from 'react'
 // helpers
-
+import * as workerTimers from 'worker-timers';
 
 type Return = {
-    setTimeoutWorker: (method: () => void, delay: number) => void,
-    clearTimeoutWorker: () => void,
+    setWorkerTimeout: (func: Function, delay: number) => void,
+    clearWorkerTimeout: () => void,
 }
 
 export default (): Return => {
 
-    const [loopId, setLoopId] = React.useState<NodeJS.Timer>()
+    const [timeoutId, setTimeoutID] = React.useState<number | null>(null)
 
-    const setTimeoutWorker = (method: () => void, delay: number): void => {
-        setLoopId(
-            setTimeout(() => {method()}, delay)
-        )
+    const setWorkerTimeout = (func: Function, delay: number): void => {
+        setTimeoutID(workerTimers.setTimeout(() => {func()}, delay))
     }
 
-    const clearTimeoutWorker = (): void => {
-        clearTimeout(loopId)
+    const clearWorkerTimeout = (): void => {
+        if (timeoutId === null) {
+            return
+        }
+        setTimeoutID(null)
+        workerTimers.clearTimeout(timeoutId)
     }
 
     return {
-        setTimeoutWorker: setTimeoutWorker,
-        clearTimeoutWorker: clearTimeoutWorker,
+        setWorkerTimeout: setWorkerTimeout,
+        clearWorkerTimeout: clearWorkerTimeout,
     }
 }
