@@ -1,0 +1,20 @@
+// utils
+@use 'utils/colors'
+@use 'utils/mixins'
+
+.container
+    @include mixins.grid()
+    grid-template-columns: 1fr 1fr 1fr
+    position: fixed
+    width: 100%
+    background-color: colors.$sub-color
+    bottom: 0
+    border-top: 1px solid colors.$value-color
+
+.wrapper
+
+    &-item
+        cursor: pointer
+
+        &:not(:last-child)
+            border-right: 1px solid colors.$value-color

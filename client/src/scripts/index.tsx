@@ -1,8 +1,8 @@
 import React from 'react'
 // organisms
 import Main from '@/scripts/components/organisms/main'
+import Menu from '@/scripts/components/organisms/menu'
 // templates
-import Header from '@/scripts/components/templates/header'
 import Footer from '@/scripts/components/templates/footer'
 // styles
 import styles from '@/styles/index.module.sass'
@@ -11,9 +11,9 @@ export default () => {
 
     return (
         <div className={styles['container']}>
-            <Header></Header>
             <Main></Main>
             <Footer></Footer>
+            <Menu></Menu>
         </div>
     )
 }

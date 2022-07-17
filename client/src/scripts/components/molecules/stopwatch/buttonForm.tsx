@@ -16,24 +16,28 @@ export default (props: Props): JSX.Element  => {
 
     return (
         <div className={styles['container']}>
-            <Button
-                isRun={props.isRun}
-                activateLabel={'STOP'}
-                deactivateLabel={'START'}
-                onSubmit={props.isRun 
-                    ?   () => {props.deactivateApp()}
-                    :   () => {props.activateApp()}
-                }
-            ></Button>
-            <Button
-                isRun={false}
-                activateLabel={'RESET'}
-                deactivateLabel={'RESET'}
-                onSubmit={props.isRun 
-                    ?   () => {props.countReset()}
-                    :   () => {props.countReset()}
-                }
-            ></Button>
+            <div className={styles['button']}>
+                <Button
+                    isRun={props.isRun}
+                    activateLabel={'PAUSE'}
+                    deactivateLabel={'START'}
+                    onSubmit={props.isRun 
+                        ?   () => {props.deactivateApp()}
+                        :   () => {props.activateApp()}
+                    }
+                ></Button>
+            </div>
+            <div className={styles['button']}>
+                <Button
+                    isRun={false}
+                    activateLabel={'RESET'}
+                    deactivateLabel={'RESET'}
+                    onSubmit={props.isRun 
+                        ?   () => {props.countReset()}
+                        :   () => {props.countReset()}
+                    }
+                ></Button>
+            </div>
         </div>
     )
 }

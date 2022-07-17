@@ -28,21 +28,23 @@ export default React.forwardRef((props: Props, ref): JSX.Element  => {
 
     React.useEffect(() => {
         if (props.isRun) {
-            loopWorker.setTimeoutWorker(() => {
-                countUpdate()
-            }, 1000)
+            countUpdate()
         } else {
             loopWorker.clearTimeoutWorker()
         }
     }, [currentCouter, props.isRun])
 
     const countUpdate = (): void => {
-        const nextCounter = addSeconds(currentCouter, 1)
-        setCurrentCouter(nextCounter)
+        loopWorker.setTimeoutWorker(() => {
+            const nextCounter = addSeconds(currentCouter, 1)
+            setCurrentCouter(nextCounter)
+        }, 1000)
     }
 
     const countReset = (): void => {
+        loopWorker.clearTimeoutWorker()
         setCurrentCouter(defaultCount)
+        countUpdate()
     }
 
     return (
