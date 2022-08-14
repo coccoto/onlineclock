@@ -9,7 +9,7 @@
     "dev-server": "webpack-dev-server --mode development",
     "release": "run-s release:clean release:production",
     "release:clean": "rimraf dist",
-    "release:production": "webpack --mode production"
+    "release:production": "webpack --mode production --env ASSET_PATH=https://onlineclock.coccoto.com/"
   },
   "author": "",
   "license": "ISC",
