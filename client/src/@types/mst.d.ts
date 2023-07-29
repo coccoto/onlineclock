@@ -1,6 +1,6 @@
-type MstPathType = {
-    result: MstPathValueType[]
+type MstMenuType = {
+    result: MstMenuValueType[]
 }
-type MstPathValueType = {
-    name: string, path: string,
+type MstMenuValueType = {
+    menuName: string, path: string,
 }

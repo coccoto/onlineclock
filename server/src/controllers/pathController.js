@@ -2,13 +2,13 @@ const PathModel = require(ROOT + '/server/src/models/pathModel')
 
 module.exports = class {
 
-    async getMstPath() {
+    async getMstMenu() {
         const pathModel = new PathModel()
         await pathModel.connect()
-        return await pathModel.getMstPath()
+        return await pathModel.getMstMenu()
     }
 
     async main() {
-        return await this.getMstPath()
+        return await this.getMstMenu()
     }
 }

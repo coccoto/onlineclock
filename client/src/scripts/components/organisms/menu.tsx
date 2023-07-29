@@ -9,13 +9,13 @@ import styles from '@/styles/components/organisms/menu.module.sass'
 
 export default () => {
 
-    const [path, setPath] = React.useState<MstPathType>({
-        result: [{name: '', path: ''}]
+    const [path, setPath] = React.useState<MstMenuType>({
+        result: [{menuName: '', path: ''}]
     })
 
     React.useEffect(() => {
         const fetchApi = async () => {
-            const data = await FetchApi('/api/getMstPath')
+            const data = await FetchApi('/api/getMstMenu')
             await setPath(data)
         }
         fetchApi()
@@ -23,13 +23,13 @@ export default () => {
 
     return (
         <div className={styles['container']}>
-            {path.result.map((value: MstPathValueType, i: number): JSX.Element => {
+            {path.result.map((value: MstMenuValueType, i: number): JSX.Element => {
                 return (
                     <div
                         key={i}
                     className={value['path'] === location.pathname ? styles['wrapper-item-selected'] : styles['wrapper-item']}>
                         <MenuItem
-                            label={value['name']}
+                            label={value['menuName']}
                             path={value['path']}
                         ></MenuItem>
                     </div>

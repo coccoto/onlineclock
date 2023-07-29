@@ -6,7 +6,7 @@ module.exports = (app) => {
         return
     })
 
-    app.route('/api/getMstPath').post(async (req, res) => {
+    app.route('/api/getMstMenu').post(async (req, res) => {
         const pathController = new PathController()
         const result = await pathController.main()
         res.json({result: result})
