@@ -10,7 +10,7 @@ import styles from '@/styles/components/organisms/menu.module.sass'
 export default () => {
 
     const [menu, setMenu] = React.useState<MstMenuType>({
-        result: [{menu_name: '', path: ''}]
+        result: [{system_name: '', screen_name: '', origin: '', path: ''}]
     })
 
     React.useEffect(() => {
@@ -27,9 +27,9 @@ export default () => {
                 return (
                     <div
                         key={i}
-                    className={value['path'] === location.pathname ? styles['wrapper-item-selected'] : styles['wrapper-item']}>
+                        className={value['path'] === location.pathname ? styles['wrapper-item-selected'] : styles['wrapper-item']}>
                         <MenuItem
-                            label={value['menu_name']}
+                            label={value['screen_name']}
                             path={value['path']}
                         ></MenuItem>
                     </div>
