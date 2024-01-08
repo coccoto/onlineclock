@@ -4,12 +4,12 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest",
     "build": "webpack --mode development",
     "dev-server": "webpack-dev-server --mode development",
     "release": "run-s release:clean release:production",
     "release:clean": "rimraf dist",
-    "release:production": "webpack --mode production --env ASSET_PATH=https://onlineclock.coccoto.com/"
+    "release:production": "webpack --mode production --env ASSET_PATH=https://onlineclock.coccoto.com/",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
