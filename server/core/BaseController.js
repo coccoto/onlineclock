@@ -1,4 +1,4 @@
-const DBManager = require(ROOT + '/server/core/DBManager')
+const { DBManager } = require('@coccoto/node-dbmanager')
 
 module.exports = class {
 

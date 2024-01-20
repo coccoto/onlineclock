@@ -9,7 +9,7 @@ global.ROOT = path.resolve(__dirname, '..', '..')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const loggerManager = require(ROOT + '/server/core/LoggerManager')
+const { logger } = require('@coccoto/node-logmanager')
 const app = require(ROOT + '/server/app.js')
 
 // Configure port
@@ -22,7 +22,7 @@ const server = http.createServer(app)
 
 // Error handling during server startup
 const onError = (error) => {
-    loggerManager.error(error)
+    logger.error(error)
 }
 
 // Handle server listening events
@@ -30,7 +30,7 @@ const onListening = () => {
     const address = server.address()
     const message = `Local: http://localhost:${address.port}/`
     console.info(message)
-    loggerManager.info(message)
+    logger.info(message)
 }
 
 // Start server with error and listening event handlers
