@@ -11,6 +11,13 @@ function build() {
     npm run release || exit 1
 }
 
+function initenv() {
+    cd "$1"
+    if [ ! -f "$1/.env" ]; then
+        cp .env.example .env || exit 1
+    fi
+}
+
 # 本スクリプトファイルのディレクトリをセットする
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 
@@ -27,5 +34,6 @@ echo 'client complete'
 
 # server の処理を開始する
 npmInstall "$SERVER_DIR"
+initenv "$SERVER_DIR"
 
 echo 'server complete'
