@@ -9,24 +9,24 @@ import styles from '@/styles/components/organisms/menu.module.sass'
 
 export default () => {
 
-    const [menu, setMenu] = React.useState<MstMenuType>({
-        result: [{system_name: '', screen_name: '', origin: '', path: ''}]
+    const [menuList, setMenuList] = React.useState<MstMenuListType>({
+        result: [{id: 0, system_name: '', screen_name: '', origin: '', path: ''}]
     })
 
     React.useEffect(() => {
         const fetchApi = async () => {
-            const data = await FetchApi('/api/getMstMenu')
-            await setMenu(data)
+            const data = await FetchApi('/api/get/menu-list')
+            await setMenuList(data)
         }
         fetchApi()
     }, [])
 
     return (
         <div className={styles['container']}>
-            {menu.result.map((value: MstMenuValueType, i: number): JSX.Element => {
+            {menuList.result.map((value: MstMenuListValueType): JSX.Element => {
                 return (
                     <div
-                        key={i}
+                        key={value['id']}
                         className={value['path'] === location.pathname ? styles['wrapper-item-selected'] : styles['wrapper-item']}>
                         <MenuItem
                             label={value['screen_name']}

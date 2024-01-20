@@ -10,7 +10,7 @@ logs/
 dist/
 
 #
-# dotenv files
+# env files
 #
 .env
 

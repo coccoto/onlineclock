@@ -1,6 +1,10 @@
-type MstMenuType = {
-    result: MstMenuValueType[]
+type MstMenuListType = {
+    result: MstMenuListValueType[]
 }
-type MstMenuValueType = {
-    system_name: string, screen_name: string, origin: string, path: string,
+type MstMenuListValueType = {
+    id: integer,
+    system_name: string,
+    screen_name: string,
+    origin: string,
+    path: string,
 }
