@@ -29,7 +29,7 @@ SERVER_DIR="$SCRIPT_DIR/../server"
 
 # client の処理を開始する
 npmInstall "$CLIENT_DIR"
-build "$CLIENT_DIR" "$1"
+build "$CLIENT_DIR"
 
 echo 'client complete'
 
