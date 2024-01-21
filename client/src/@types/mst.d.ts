@@ -1,7 +1,7 @@
-type MstMenuListType = {
-    result: MstMenuListValueType[]
+type MenuListType = {
+    result: MenuListResultType[]
 }
-type MstMenuListValueType = {
+type MenuListResultType = {
     id: integer,
     system_name: string,
     screen_name: string,

@@ -9,7 +9,7 @@ import styles from '@/styles/components/organisms/menu.module.sass'
 
 export default () => {
 
-    const [menuList, setMenuList] = React.useState<MstMenuListType>({
+    const [menuList, setMenuList] = React.useState<MenuListType>({
         result: [{id: 0, system_name: '', screen_name: '', origin: '', path: ''}]
     })
 
@@ -23,7 +23,7 @@ export default () => {
 
     return (
         <div className={styles['container']}>
-            {menuList.result.map((value: MstMenuListValueType): JSX.Element => {
+            {menuList.result.map((value: MenuListResultType): JSX.Element => {
                 return (
                     <div
                         key={value['id']}
