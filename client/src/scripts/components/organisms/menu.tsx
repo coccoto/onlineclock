@@ -3,7 +3,7 @@ import React from 'react'
 // atoms
 import MenuItem from '@/scripts/components/atoms/menuItem'
 // utils
-import FetchApi from '@/scripts/utils/common/fetchApi'
+import fetchApi from '@/scripts/utils/fetchApi'
 // styles
 import styles from '@/styles/components/organisms/menu.module.sass'
 
@@ -14,11 +14,11 @@ export default () => {
     })
 
     React.useEffect(() => {
-        const fetchApi = async () => {
-            const data = await FetchApi('/api/get/menu-list')
-            await setMenuList(data)
+        const postRequest = async () => {
+            const response = await fetchApi<MenuListType>('/api/get/menu-list', { method: 'post' })
+            await setMenuList(response)
         }
-        fetchApi()
+        postRequest()
     }, [])
 
     return (
