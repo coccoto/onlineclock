@@ -13,10 +13,11 @@ function build() {
 
 function initenv() {
     cd "$1"
-    if [ ! -f "$1/.env" ]; then
-        cp .env.example .env || exit 1
-    fi
+    cp .env.example .env || exit 1
 }
+
+# 引数をセットする
+IS_DEVELOPMENT="${1:-production}"
 
 # 本スクリプトファイルのディレクトリをセットする
 SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
@@ -28,7 +29,7 @@ SERVER_DIR="$SCRIPT_DIR/../server"
 
 # client の処理を開始する
 npmInstall "$CLIENT_DIR"
-build "$CLIENT_DIR"
+build "$CLIENT_DIR" "$1"
 
 echo 'client complete'
 
