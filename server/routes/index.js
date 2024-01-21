@@ -15,7 +15,7 @@ module.exports = (app) => {
             res = await menuListController.main()
             return
         } catch (error) {
-            logger.error(`Error in ${endpoint} route. Error: ${error}`)
+            logger.error(`Error in ${endpoint} route. Error: ${error.message}`)
             return
         } 
     })
