@@ -1,6 +1,7 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 
+const DEVELOP_URL = 'http://localhost:10820/'
 const PRODUCT_URL = 'https://onlineclock.coccoto.com/'
 
 const SOURCE = path.resolve(__dirname, 'src')
@@ -9,7 +10,7 @@ const OUTPUT = path.resolve(__dirname, 'dist')
 module.exports = (env, argv) => {
 
     const IS_DEVELOPMENT = argv.mode === 'development'
-    const ASSET_PATH = IS_DEVELOPMENT ? '/' : PRODUCT_URL
+    const ASSET_PATH = IS_DEVELOPMENT ? DEVELOP_URL : PRODUCT_URL
 
     return {
         entry: {
